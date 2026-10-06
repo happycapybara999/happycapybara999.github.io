@@ -25,17 +25,18 @@ html { background: var(--background); }
 :root[data-theme="dark"] .class-title-row h4 { color: #e7edf4; }
 :root[data-theme="dark"] .last-updated { color: #aeb8c5; }
 :root[data-theme="dark"] .session-badge { border-color: transparent; }
-:root[data-theme="dark"] .class-card.pink .session-badge, :root[data-theme="dark"] .class-card.pink .lecture-badge { color: #f28ab5; background: #3a1c2a; }
-:root[data-theme="dark"] .class-card.blue .session-badge, :root[data-theme="dark"] .class-card.blue .lecture-badge { color: #6eaeef; background: #172b43; }
-:root[data-theme="dark"] .class-card.green .session-badge, :root[data-theme="dark"] .class-card.green .lecture-badge { color: #65d5aa; background: #12362a; }
-:root[data-theme="dark"] .class-card.orange .session-badge, :root[data-theme="dark"] .class-card.orange .lecture-badge { color: #ff9a68; background: #422314; }
-:root[data-theme="dark"] .class-card.yellow .session-badge, :root[data-theme="dark"] .class-card.yellow .lecture-badge { color: #ffe56b; background: #413713; }
-:root[data-theme="dark"] .class-card.indigo .session-badge, :root[data-theme="dark"] .class-card.indigo .lecture-badge { color: #b89aff; background: #2d1d52; }
+:root[data-theme="dark"] .class-card.pink .session-badge, :root[data-theme="dark"] .class-card.pink .lecture-badge, :root[data-theme="dark"] .class-card.pink .exercise-badge { color: #f28ab5; background: #3a1c2a; }
+:root[data-theme="dark"] .class-card.blue .session-badge, :root[data-theme="dark"] .class-card.blue .lecture-badge, :root[data-theme="dark"] .class-card.blue .exercise-badge { color: #6eaeef; background: #172b43; }
+:root[data-theme="dark"] .class-card.green .session-badge, :root[data-theme="dark"] .class-card.green .lecture-badge, :root[data-theme="dark"] .class-card.green .exercise-badge { color: #65d5aa; background: #12362a; }
+:root[data-theme="dark"] .class-card.orange .session-badge, :root[data-theme="dark"] .class-card.orange .lecture-badge, :root[data-theme="dark"] .class-card.orange .exercise-badge { color: #ff9a68; background: #422314; }
+:root[data-theme="dark"] .class-card.yellow .session-badge, :root[data-theme="dark"] .class-card.yellow .lecture-badge, :root[data-theme="dark"] .class-card.yellow .exercise-badge { color: #ffe56b; background: #413713; }
+:root[data-theme="dark"] .class-card.indigo .session-badge, :root[data-theme="dark"] .class-card.indigo .lecture-badge, :root[data-theme="dark"] .class-card.indigo .exercise-badge { color: #b89aff; background: #2d1d52; }
 :root[data-theme="dark"] .break-card { border-color: #555; background: #1b1b1b; color: #c0cad6; }
 :root[data-theme="dark"] .break-card time { color: #b8c3d0; }
 :root[data-theme="dark"] .divider, :root[data-theme="dark"] .brand-mark { border-color: #333; }
 :root[data-theme="dark"] .weekend-content { border-color: #252525; }
 :root[data-theme="dark"] .day-section { border-color: #252525; }
+:root[data-theme="dark"] .lecture-badge::after, :root[data-theme="dark"] .exercise-badge::after, :root[data-theme="dark"] .teams-button::after { color: #111827 !important; background: #fff !important; }
 
 :root[data-theme="dark"] .brand-mark { color: #fff; background: linear-gradient(115deg, #7b18c9 0%, #4b2fd0 38%, #3d55d9 68%, #8a36c7 100%); background-size: 180% 180%; background-position: center; }
 :root[data-theme="dark"] .column-arrow { background: transparent; }
@@ -75,7 +76,7 @@ button:not(.weekend-toggle):not(.day-toggle):not(.theme-toggle):hover { backgrou
 .weekend-list::-webkit-scrollbar { display: none; }
 .weekend-card { flex: 0 0 66.666vw; min-width: 66.666vw; scroll-snap-align: start; position: relative; border: 1px solid #e3e7ea; border-radius: 12px; background: #fff; isolation: isolate; opacity: var(--card-opacity, .25); transition: none; }
 
-.weekend-toggle { width: 100%; min-height: 76px; padding: 18px; display: flex; align-items: center; justify-content: space-between; border-radius: 10px 10px 0 0; text-align: center; background: #fff; }
+.weekend-toggle { width: 100%; min-height: 76px; padding: 18px 16px; display: flex; align-items: center; justify-content: space-between; border-radius: 10px 10px 0 0; text-align: center; background: #fff; }
 .weekend-heading { min-width: 0; flex: 1; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 4px; }
 .column-arrow, .column-arrow-placeholder { width: 40px; height: 40px; flex: 0 0 40px; margin: 0; padding: 0; display: grid; place-items: center; border: 2px solid #dfe4e8; border-radius: 8px; color: #59636e; background: #fff; transition: background-color .15s ease, border-color .15s ease, color .15s ease; }
 .column-arrow:hover { color: #17202a; background: #f3f5f6; border-color: #dfe4e8; }
@@ -92,7 +93,7 @@ button:not(.weekend-toggle):not(.day-toggle):not(.theme-toggle):hover { backgrou
 .chevron-box { width: 28px; height: 28px; display: grid; place-items: center; color: #929aa2; }
 .weekend-toggle[aria-expanded="true"] .chevron-box svg, .day-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
 .chevron-box svg, .day-toggle svg { transition: transform .2s ease; }
-.weekend-content { padding: 0 18px 16px; border-top: 1px solid #f0f2f3; }
+.weekend-content { padding: 0 16px 16px; border-top: 1px solid #f0f2f3; }
 .day-section { margin-top: 16px; padding-top: 0; border-top: 0; }
 .day-section:first-child { margin-top: 16px; padding-top: 0; }
 .day-toggle { width: 100%; height: 40px; margin-bottom: 0; padding: 0; display: flex; align-items: center; border-radius: 8px; color: #7a838c; background: transparent; text-align: left; }
@@ -102,9 +103,9 @@ button:not(.weekend-toggle):not(.day-toggle):not(.theme-toggle):hover { backgrou
 .day-toggle svg { color: #a8afb6; }
 .class-list { display: flex; flex-direction: column; gap: 8px; }
 .empty-day-message { margin: 0; padding: 4px 0; color: #7d8792; font-size: var(--body); }
-.class-card { position: relative; min-height: 60px; padding: 8px; padding-left: 20px; display: flex; align-items: center; border: 1px solid #e3e7ea; border-radius: 8px; background: #fff; }
-.class-card::before { content: ""; width: 4px; position: absolute; left: 8px; top: 8px; bottom: 8px; border-radius: 999px; }
-.class-card time { width: 160px; flex: 0 0 160px; color: #4c5660; font-family: "Roboto Mono", ui-monospace, monospace; font-size: var(--body); font-weight: 550; }
+.class-card { position: relative; min-height: 60px; padding: 12px 16px; padding-left: 28px; display: flex; align-items: center; border: 1px solid #e3e7ea; border-radius: 8px; background: #fff; }
+.class-card::before { content: ""; width: 4px; position: absolute; left: 12px; top: 12px; bottom: 12px; border-radius: 999px; }
+.class-card time { width: 150px; flex: 0 0 150px; color: #4c5660; font-family: "Roboto Mono", ui-monospace, monospace; font-size: var(--body); font-weight: 550; }
 .class-info { min-width: 0; flex: 1; align-self: center; }
 .class-title-row { display: flex; align-items: center; gap: 12px; }
 .class-info p { margin-top: 4px; }
@@ -121,8 +122,8 @@ button:not(.weekend-toggle):not(.day-toggle):not(.theme-toggle):hover { backgrou
 .class-card.indigo .session-badge, .class-card.indigo .lecture-badge { color: #4d1fa3; background: #eee5ff; }
 .lecture-badge, .exercise-badge { position: relative; min-width: 22px; padding: 0 5px; font-family: inherit; font-weight: 400; cursor: help; }
 .exercise-badge { border: 1px solid currentColor !important; background: transparent !important; }
-.lecture-badge::after { content: attr(data-tooltip); position: absolute; z-index: 10; left: 50%; bottom: calc(100% + 7px); padding: 6px 8px; border-radius: 5px; color: #fff; background: #111827; font-size: var(--caption); font-weight: 400; opacity: 0; pointer-events: none; transform: translate(-50%, 3px); transition: opacity .15s ease, transform .15s ease; }
-.lecture-badge:hover::after, .lecture-badge:focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
+.lecture-badge::after, .exercise-badge::after { content: attr(data-tooltip); position: absolute; z-index: 10; left: 50%; bottom: calc(100% + 7px); padding: 6px 8px; border-radius: 5px; color: #fff; background: #111827; font-size: var(--caption); font-weight: 400; opacity: 0; pointer-events: none; transform: translate(-50%, 3px); transition: opacity .15s ease, transform .15s ease; width: max-content; white-space: nowrap; }
+.lecture-badge:hover::after, .lecture-badge:focus-visible::after, .exercise-badge:hover::after, .exercise-badge:focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
 .teams-button { position: relative; height: 40px; align-self: center; display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; gap: 7px; padding: 0 12px; border: 2px solid #dfe4e8; border-radius: 8px; color: #59636e; background: #fff; cursor: help; font-family: inherit; font-size: var(--body); font-weight: 400; text-align: center; white-space: nowrap; }
 .teams-button img { width: 20px; height: 20px; flex: 0 0 20px; object-fit: contain; }
 .teams-button::after { content: attr(data-tooltip); position: absolute; z-index: 10; left: 50%; bottom: calc(100% + 7px); width: max-content; padding: 6px 8px; border-radius: 5px; color: #fff; background: #111827; font-size: var(--caption); font-weight: 400; opacity: 0; pointer-events: none; transform: translate(-50%, 3px); transition: opacity .15s ease, transform .15s ease; }
@@ -130,17 +131,19 @@ button:not(.weekend-toggle):not(.day-toggle):not(.theme-toggle):hover { backgrou
 .teams-button:focus-visible { outline: 2px solid #8aa8c2; outline-offset: 2px; }
 .class-info p { overflow: hidden; margin: 4px 0 0; color: #7a838c; font-size: var(--body); text-overflow: ellipsis; white-space: nowrap; }
 .class-card.pink::before { background: #f28ab5; }.class-card.blue::before { background: #1976d2; }.class-card.green::before { background: #16a06f; }.class-card.orange::before { background: #f97316; }.class-card.yellow::before { background: #facc15; }.class-card.indigo::before { background: #6d28d9; }
-.break-card { position: relative; min-height: 60px; padding: 8px; padding-left: 20px; display: flex; align-items: center; border: 1px dashed #cbd5e1; border-radius: 8px; background: #f8fafc; color: #7a838c; }
-.break-card time { width: 160px; flex: 0 0 160px; color: #7a838c; font-family: "Roboto Mono", ui-monospace, monospace; font-size: var(--body); font-weight: 550; }
+.break-card { position: relative; min-height: 60px; padding: 12px 16px; padding-left: 28px; display: flex; align-items: center; border: 1px dashed #cbd5e1; border-radius: 8px; background: #f8fafc; color: #7a838c; }
+.break-card::before { content: ""; width: 4px; position: absolute; left: 12px; top: 12px; bottom: 12px; border-radius: 999px; opacity: 0; }
+.break-card time { width: 150px; flex: 0 0 150px; color: #7a838c; font-family: "Roboto Mono", ui-monospace, monospace; font-size: var(--body); font-weight: 550; }
 .break-info { min-width: 0; flex: 1; align-self: center; }
 .break-info strong { font-size: var(--subtitle); font-weight: 600; color: #7a838c; }
-.empty-state { padding: 20px; border-top: 1px solid #f0f2f3; color: #9aa2a9; font-size: 13px; text-align: center; }
+.break-content-mobile { display: none; }
+.empty-state { padding: 20px 16px; border-top: 1px solid #f0f2f3; color: #9aa2a9; font-size: 13px; text-align: center; }
 .schedule-footer { max-width: 920px; margin: 0 auto; padding: 18px 24px 16px; display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center; }
 .last-updated { color: #7a838c; font-size: var(--caption); line-height: 1.4; text-align: center; }
 .install-button { height: 40px; display: inline-flex; align-items: center; justify-content: center; padding: 0 12px; border: 2px solid #dfe4e8; border-radius: 8px; color: #59636e; background: #fff; font-family: inherit; font-size: var(--body); font-weight: 400; text-align: center; cursor: pointer; transition: background-color .15s ease, border-color .15s ease, color .15s ease; }
 .install-button:focus-visible { outline: 2px solid #8aa8c2; outline-offset: 2px; }
 @media (max-width: 600px) { .schedule-footer { padding: 18px 16px 16px; }.install-button { width: 100%; } }
-@media (max-width: 600px) { .desktop-header-details { display: none; }.mobile-header-details { display: inline-flex; }.header-details { margin-left: 8px; }.header-inner, .schedule-container { width: 100%; margin: 0; padding-left: 16px; padding-right: 16px; }.schedule-container { width: 100%; padding-top: 25px; }.weekend-list { gap: 16px; margin: 0; padding: 0; scroll-snap-type: x mandatory; scroll-padding-inline: 0; touch-action: pan-x pan-y; }.weekend-card { flex: 0 0 100%; min-width: 100%; opacity: 1; scroll-snap-align: start; scroll-snap-stop: always; }.weekend-content { padding: 0 12px 14px; }.weekend-toggle { padding: 13px 14px; }.weekend-heading { min-width: 0; flex: 1; }.weekend-heading strong { font-size: var(--subtitle); }.class-card { align-items: flex-start; flex-direction: column; gap: 7px; padding: 8px; padding-left: 20px; }.class-card time { width: auto; flex-basis: auto; font-size: var(--body); }.break-card { align-items: flex-start; flex-direction: column; gap: 7px; padding: 8px; padding-left: 20px; }.break-card time { width: auto; flex-basis: auto; }.class-title-row { align-items: flex-start; }.class-title-row h4 { white-space: normal; }.class-info { width: 100%; }.teams-button { width: 100%; align-self: stretch; } }
+@media (max-width: 600px) { .desktop-header-details { display: none; }.mobile-header-details { display: inline-flex; }.header-details { margin-left: 8px; }.header-inner, .schedule-container { width: 100%; margin: 0; padding-left: 16px; padding-right: 16px; }.schedule-container { width: 100%; padding-top: 25px; }.weekend-list { gap: 16px; margin: 0; padding: 0; scroll-snap-type: x mandatory; scroll-padding-inline: 0; touch-action: pan-x pan-y; }.weekend-card { flex: 0 0 100%; min-width: 100%; opacity: 1; scroll-snap-align: start; scroll-snap-stop: always; }.weekend-content { padding: 0 12px 14px; }.weekend-toggle { padding: 13px 14px; }.weekend-heading { min-width: 0; flex: 1; }.weekend-heading strong { font-size: var(--subtitle); }.class-card { align-items: flex-start; flex-direction: column; gap: 7px; padding: 12px 16px; padding-left: 28px; }.class-card time { width: auto; flex-basis: auto; font-size: var(--body); }.break-card { align-items: flex-start; flex-direction: column; gap: 7px; padding: 12px 16px; padding-left: 28px; }.break-card time { width: auto; flex-basis: auto; }.break-card .break-info { display: none; }.break-card .break-content-mobile { display: block; width: 100%; }.break-card .break-content-mobile h4 { margin: 0; font-size: var(--subtitle); font-weight: 600; color: #7a838c; }.class-title-row { align-items: flex-start; }.class-title-row h4 { white-space: normal; }.class-info { width: 100%; }.teams-button { width: 100%; align-self: stretch; } }
 @media (prefers-color-scheme: dark) { :root { color-scheme: light; } }
 
 /* Static GitHub Pages adjustments */
@@ -218,7 +221,7 @@ const weekends = [
 
 const colors = {
   healthSat: ['Psychologia zdrowia', 'mgr L. Kwiecińska · T-13', '08:00 – 10:15', 'pink'],
-  workSat: ['Psychologia pracy', 'mgr W. Czaplińska · T-25', '10:30 – 12:45', 'blue'],
+  workSat: ['Psychologia pracy', 'dr A. Furman · T-25', '10:30 – 12:45', 'blue'],
   psychSat: ['Psychopatologia', 'dr M. Kornatowski · TA-2', '13:00 – 15:15', 'green'],
   economySat: ['Psychologia ekonomiczna', 'Brak informacji o prowadzącym · T-12', '15:30 – 17:45', 'orange'],
   managementSat: ['Psychologia zarządzania', 'mgr W. Czaplińska · T-25', '18:00 – 20:15', 'yellow'],
@@ -246,7 +249,7 @@ function getDays(id) {
 
   const saturday = [
     item(colors.healthSat[0], colors.healthSat[1], colors.healthSat[2], colors.healthSat[3], [id], 8),
-    item(colors.workSat[0], colors.workSat[1], colors.workSat[2], colors.workSat[3], [id], 8)
+    item('Psychologia pracy', 'dr A. Furman · T-25', '10:30 – 12:45', 'blue', [id], 8)
   ];
 
   if (id === 1) {
@@ -278,8 +281,8 @@ function getDays(id) {
     sunday.push(item('Przedsiębiorczość', 'dr B. Kowańska · Online', '15:15 – 16:45', 'indigo', [id], 4));
   } else if ([1,3,5,7].includes(id)) {
     sunday.push(
-      item('Psychologia pracy', 'mgr A. Furman · Online', '15:15 – 16:45', 'blue', [id], 8, 1),
-      item('Psychologia pracy', 'mgr A. Furman · Online', '17:00 – 18:30', 'blue', [id], 8, 2)
+      item('Psychologia pracy', 'dr A. Furman · Online', '15:15 – 16:45', 'blue', [id], 8, 1),
+      item('Psychologia pracy', 'dr A. Furman · Online', '17:00 – 18:30', 'blue', [id], 8, 2)
     );
   }
   return [{day:'Sobota', classes:saturday}, {day:'Niedziela', classes:sunday}];
@@ -397,7 +400,7 @@ function renderClass(x,id,day,dateText) {
       </div>
       <p>${x.teacher}</p>
     </div>
-    ${sundayLecture?'<button type="button" class="teams-button" data-tooltip="Dostępne wkrótce" aria-label="Otwórz Teams"><img src="./Microsoft_Teams.png" width="20" height="20" alt="Microsoft Teams"><span>Otwórz Teams</span></button>':''}
+    ${sundayLecture || sundayWork ?'<button type="button" class="teams-button" data-tooltip="Dostępne wkrótce" aria-label="Otwórz Teams"><img src="./Microsoft_Teams.png" width="20" height="20" alt="Microsoft Teams"><span>Otwórz Teams</span></button>':''}
   </article>`;
 }
 
@@ -405,7 +408,7 @@ function renderDay(day,id,dateText) {
   const classes=day.classes.filter(x=>scheduled(x,day.day,id));
   const content=classes.length
     ? `<div class="class-list">${withBreaks(classes).map(x=>x.type==='break'
-        ? `<article class="break-card"><time>${x.time}</time><div class="break-info"><strong>Przerwa</strong></div></article>`
+        ? `<article class="break-card"><time>${x.time}</time><div class="break-info"><strong>Przerwa</strong></div><div class="break-content-mobile"><h4>Przerwa</h4></div></article>`
         : renderClass(x,id,day.day,dateText)).join('')}</div>`
     : `<p class="empty-day-message">Brak zajęć w ten dzień</p>`;
   const activeDay=classes.some(x=>classActive(dateText,day.day,x.time));
@@ -519,10 +522,12 @@ function endDrag(e){
 scheduleEl.addEventListener('pointerup',endDrag);
 scheduleEl.addEventListener('pointercancel',endDrag);
 
-function setTheme(dark) {
+function setTheme(dark, save = false) {
   document.documentElement.dataset.theme=dark?'dark':'light';
   document.documentElement.style.colorScheme=dark?'dark':'light';
-  localStorage.setItem('schedule-theme',dark?'dark':'light');
+  if(save) {
+    localStorage.setItem('schedule-theme',dark?'dark':'light');
+  }
   const b=document.getElementById('themeToggle');
   b.setAttribute('aria-label',dark?'Włącz jasny motyw':'Włącz ciemny motyw');
   b.setAttribute('aria-pressed',dark?'true':'false');
@@ -530,11 +535,25 @@ function setTheme(dark) {
   thumb.classList.toggle('is-dark', dark);
   thumb.innerHTML=iconTheme(dark);
 }
+
 const saved=localStorage.getItem('schedule-theme');
-const prefers=window.matchMedia('(prefers-color-scheme: dark)').matches;
-setTheme(saved ? saved==='dark' : prefers);
+const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+if(saved) {
+  setTheme(saved === 'dark', false);
+} else {
+  setTheme(darkModeMediaQuery.matches, false);
+}
+
+darkModeMediaQuery.addEventListener('change', (e) => {
+  if(!localStorage.getItem('schedule-theme')) {
+    setTheme(e.matches, false);
+  }
+});
+
 document.getElementById('themeToggle').addEventListener('click',()=>{
-  setTheme(document.documentElement.dataset.theme!=='dark');
+  const isDark = document.documentElement.dataset.theme !== 'dark';
+  setTheme(isDark, true);
 });
 
 document.getElementById('favoriteButton').addEventListener('click',()=>{
