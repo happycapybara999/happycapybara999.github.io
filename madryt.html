@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Madryt 11–16.10</title>
+<style>
+:root{--fs-s:12px;--fs-m:14px;--fs-l:20px;--fs-xl:28px;--s0:4px;--s1:8px;--s2:16px;--s3:24px;--h:40px;--bw:1px;
+--bg:#fff;--tx:#1a1a1a;--mut:#6f6f6f;--sf:#f4f4f4;--ln:#e0e0e0;--ac:#ff6900;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#141414;--tx:#f5f5f5;--mut:#9a9a9a;--sf:#222;--ln:#333}}
+*{box-sizing:border-box;border-radius:0}html,body{margin:0}
+body{background:var(--bg);color:var(--tx);font:400 var(--fs-m)/1.4 "Helvetica Neue",Arial,sans-serif}
+button,a,iframe{font:inherit}
+header{position:sticky;top:0;background:var(--bg);z-index:5;border-bottom:var(--bw) solid var(--ln)}
+.top{display:flex;justify-content:space-between;align-items:center;gap:var(--s2);padding:var(--s2);max-width:1000px;margin:0 auto}
+.logo{font-size:var(--fs-l);font-weight:700}.logo i{color:var(--ac);font-style:normal}
+.chips{display:flex;gap:var(--s1);overflow-x:auto;padding:0 var(--s2) var(--s2);max-width:1000px;margin:0 auto;scrollbar-width:none}
+main{max-width:1000px;margin:0 auto;padding:var(--s2)}
+h2{font-size:var(--fs-xl);font-weight:700;margin:0;line-height:1.2}
+.sub{color:var(--mut);margin:0}
+.dh{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--s2);margin-bottom:var(--s2)}.dh h2{line-height:var(--h)}
+.note{background:var(--sf);padding:var(--s2);margin-bottom:var(--s2)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s3) var(--s2)}
+@media(min-width:700px){.grid{grid-template-columns:repeat(4,1fr)}}
+.c{cursor:pointer;display:block}
+.im{position:relative;aspect-ratio:3/4;background:var(--sf);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:var(--fs-xl)}
+.im img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tag{position:absolute;left:0;bottom:var(--s1);background:var(--bg);color:var(--tx);font-size:var(--fs-s);font-weight:700;padding:var(--s0) var(--s1);z-index:2}
+.c .p{font-weight:700;margin-top:var(--s1)}.c .q{color:var(--mut);font-size:var(--fs-s)}
+.rw{grid-column:1/-1;color:var(--mut);border-top:var(--bw) solid var(--ln);padding-top:var(--s1)}.rw b{color:var(--tx);font-weight:700}
+#bk{position:fixed;inset:0;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .2s;z-index:20}#bk.on{opacity:1;pointer-events:auto}
+#pg{position:fixed;top:0;right:0;bottom:0;width:100%;max-width:480px;background:var(--bg);z-index:21;overflow:auto;transform:translateX(105%);transition:transform .2s;padding-bottom:88px}#pg.on{transform:none}
+.cl{position:absolute;top:calc(var(--s1) + env(safe-area-inset-top,0px));left:var(--s1);z-index:3}
+.gal{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.gal>div{flex:none;width:100%;aspect-ratio:4/5;scroll-snap-align:center;background:var(--sf);display:flex;align-items:center;justify-content:center;font-size:var(--fs-xl);position:relative}
+.gal img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cnt{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:right;font-size:var(--fs-s);color:var(--mut);padding:var(--s1) var(--s2) 0;min-height:var(--s3)}
+.bd{padding:var(--s1) var(--s2)}.bd h3{font-size:var(--fs-l);font-weight:700;margin:0;line-height:1.2}.kat{color:var(--mut)}
+.big{font-size:var(--fs-l);font-weight:700;margin:var(--s2) 0 0}
+.sec{border-top:var(--bw) solid var(--ln);padding:var(--s2) 0;margin-top:var(--s2)}
+.sec b{display:block;font-size:var(--fs-s);font-weight:700;color:var(--mut);margin-bottom:var(--s0)}
+iframe{width:100%;height:240px;border:0;background:var(--sf);margin-top:var(--s1)}
+.bar{position:fixed;bottom:0;right:0;width:100%;max-width:480px;display:flex;gap:var(--s1);padding:var(--s2) var(--s2) calc(var(--s2) + env(safe-area-inset-bottom,0px));background:var(--bg);border-top:var(--bw) solid var(--ln);z-index:22;transform:translateX(105%);transition:transform .2s}.bar.on{transform:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--s1);min-height:var(--h);min-width:var(--h);padding:0 var(--s2);border:var(--bw) solid var(--tx);background:var(--bg);color:var(--tx);font-size:var(--fs-m);font-weight:700;line-height:1;text-decoration:none;white-space:nowrap;cursor:pointer}
+.bar .btn{flex:1}.bar .ic{flex:none}
+.btn.pri,.btn.chip.on{background:var(--tx);color:var(--bg)}
+.btn.chip{flex:none}
+.btn.ic{padding:0;width:var(--h)}
+.btn:hover{opacity:.8}
+.im img,.gal img{filter:grayscale(1) contrast(1.6) brightness(.85)}
+.gr::before,.gr::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1}
+.gr::before{background:linear-gradient(to bottom,rgba(255,106,0,0) 35%,rgba(255,106,0,.7) 65%,#ff6a00 100%);mix-blend-mode:overlay}
+.gr::after{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='2.2 0 0 0 -.6 2.2 0 0 0 -.6 2.2 0 0 0 -.6 0 0 0 0 .38'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),radial-gradient(ellipse at center,transparent 55%,rgba(0,0,0,.6) 100%)}
+.long{line-height:1.6;margin:0 0 var(--s2)}.long:last-child{margin:0}
+.btn:focus-visible,.c:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+</style></head><body>
+<header><div class="top"><div class="logo">MADRYT<i>.</i></div><a class="btn pri" id="all" target="_blank" rel="noopener">Cała trasa ↗</a></div><div class="chips" id="chips"></div></header>
+<main id="m"></main><div id="bk"></div><div id="pg"></div><div class="bar" id="bar"></div>
+<script>
+const H="Hotel Suites Viena, Calle Juan Álvarez de Mendizábal 17, Madrid";
+const M="https://www.google.com/maps/";
+const enc=encodeURIComponent;
+// t czas, n nazwa, tr transport z planu, q zapytanie do Map, i info, w dojście z hotelu (szacunkowo), md tryb
+const D=[
+{d:"Niedziela",dt:"11.10",s:[
+{t:"06:49",n:"Pociąg Łódź Fabryczna → Warszawa Zachodnia",tr:"Pociąg",q:"Dworzec Łódź Fabryczna",nr:1},
+{t:"14:35",n:"Przylot na lotnisko Madryt-Barajas",tr:"Samolot",q:"Aeropuerto Adolfo Suárez Madrid-Barajas",w:"ok. 40–50 min taksówką/metrem do hotelu",md:"transit"},
+{t:"15:30",n:"Zameldowanie w hotelu Suites Viena",tr:"Taxi",q:H,i:"Baza na cały pobyt."},
+{t:"16:00",n:"Obiad – La Charca Restaurante",tr:"Pieszo 2 min",q:"La Charca Restaurante Madrid",w:"ok. 2 min pieszo"},
+{t:"17:30",n:"Pustelnia San Antonio de la Florida",tr:"Pieszo 15 min",q:"Ermita de San Antonio de la Florida Madrid",i:"Wstęp darmowy · 09:30–20:00",w:"ok. 15–20 min pieszo"},
+{t:"18:30",n:"Świątynia Debod",tr:"Pieszo",q:"Templo de Debod Madrid",i:"Spacer",w:"ok. 10 min pieszo"},
+{t:"19:30",n:"Powrót do hotelu",tr:"Pieszo 5 min",q:H}]},
+{d:"Poniedziałek",dt:"12.10",note:"Święto państwowe – część miejsc może mieć zmienione godziny. Kupić jedną kartę Tarjeta Multi i doładować pakietem 10 przejazdów.",s:[
+{t:"08:30",n:"Wyjście z hotelu",tr:"Metro 3: Plaza de España → Sol (kier. Villaverde Alto), potem pieszo 15 min",q:H},
+{t:"09:00",n:"Parada wojskowa – Plaza de Cánovas del Castillo",tr:"Uroczystości",q:"Plaza de Cánovas del Castillo Madrid",i:"Parada i uroczystości z okazji święta narodowego.",w:"ok. 30–35 min (metro + pieszo)",md:"transit"},
+{t:"12:30",n:"Królewski Ogród Botaniczny",tr:"Pieszo 5 min",q:"Real Jardín Botánico Madrid",i:"10:00–19:00",w:"ok. 35 min (metro + pieszo)",md:"transit"},
+{t:"13:30",n:"Park Retiro",tr:"Pieszo 5 min",q:"Parque del Retiro Madrid",i:"Spacer",w:"ok. 35 min (metro + pieszo)",md:"transit"},
+{t:"15:00",n:"Obiad – Taberna el Sur",tr:"Pieszo 15 min",q:"Taberna el Sur Madrid",w:"ok. 40 min",md:"transit"},
+{t:"16:00",n:"Taras widokowy Círculo de Bellas Artes / Palacio de Cibeles",tr:"Pieszo 10 min",q:"Círculo de Bellas Artes Madrid",i:"3–6 EUR · 16:00–21:00",w:"ok. 30 min (metro + pieszo)",md:"transit"},
+{t:"18:30",n:"Powrót do hotelu",tr:"Pieszo do Sol, metro 3 → Plaza de España",q:H}]},
+{d:"Wtorek",dt:"13.10",s:[
+{t:"08:00",n:"Wyjście z hotelu → stacja Atocha",tr:"Metro 3 Ventura Rodríguez → Sol, linia 1 → Estación del Arte (30 min)",q:"Estación de Atocha Madrid",w:"ok. 30 min metrem",md:"transit"},
+{t:"09:15",n:"Pociąg do Toledo",tr:"Pociąg 45 min",q:"Estación de Atocha Madrid",i:"Wyjazd ze stacji Atocha."},
+{t:"10:30",n:"Katedra w Toledo",tr:"Pieszo 30 min lub autobus",q:"Catedral de Toledo",i:"10:00–18:30",w:"ok. 2 h (metro + pociąg + dojście)",md:"transit"},
+{t:"12:45",n:"Alcázar de Toledo",tr:"Pieszo 10 min",q:"Alcázar de Toledo",i:"Spacer",w:"ok. 2 h",md:"transit"},
+{t:"13:15",n:"Zocodover – historyczne centrum",tr:"Pieszo 5 min",q:"Plaza de Zocodover Toledo",i:"Spacer",w:"ok. 2 h",md:"transit"},
+{t:"14:00",n:"Klasztor San Juan de los Reyes",tr:"Pieszo 20 min",q:"Monasterio de San Juan de los Reyes Toledo",i:"4 EUR",w:"ok. 2 h",md:"transit"},
+{t:"15:00",n:"Obiad – Madre Tierra",tr:"Pieszo 5 min",q:"Madre Tierra restaurante Toledo",w:"ok. 2 h",md:"transit"},
+{t:"16:00",n:"Synagoga Santa María la Blanca",tr:"Pieszo 5 min",q:"Sinagoga de Santa María la Blanca Toledo",i:"4 EUR",w:"ok. 2 h",md:"transit"},
+{t:"17:20",n:"Pociąg powrotny do Madrytu",tr:"Pieszo 30 min do dworca",q:"Estación de tren de Toledo"},
+{t:"18:00",n:"Dworzec Atocha",tr:"Pociąg 45 min",q:"Estación de Atocha Madrid",i:"Oglądanie dworca (m.in. tropikalny ogród w hali).",w:"ok. 30 min metrem",md:"transit"},
+{t:"19:00",n:"Powrót do hotelu",tr:"Metro 1 → Sol, metro 3 → Ventura Rodríguez",q:H}]},
+{d:"Środa",dt:"14.10",s:[
+{t:"09:00",n:"Ogrody Jardines de Sabatini",tr:"Pieszo 10 min",q:"Jardines de Sabatini Madrid",w:"ok. 10 min pieszo"},
+{t:"10:00",n:"Katedra Almudena",tr:"Pieszo 15 min",q:"Catedral de la Almudena Madrid",i:"1 EUR",w:"ok. 20 min pieszo"},
+{t:"10:30",n:"Real Basílica de San Francisco",tr:"Pieszo 10 min",q:"Real Basílica de San Francisco el Grande Madrid",i:"6 EUR",w:"ok. 25 min pieszo"},
+{t:"12:45",n:"Pałac Królewski + Galeria Królewskich Kolekcji",tr:"Pieszo 20 min",q:"Palacio Real de Madrid",w:"ok. 20 min pieszo"},
+{t:"13:30",n:"Obiad – El MiniBAR",tr:"Pieszo 10 min",q:"El MiniBAR Madrid",w:"ok. 25 min pieszo"},
+{t:"14:30",n:"Plaza Mayor, Puerta del Sol",tr:"Pieszo 10 min",q:"Plaza Mayor Madrid",i:"Spacer",w:"ok. 30 min pieszo"},
+{t:"15:00",n:"Park Retiro",tr:"Pieszo 20 min",q:"Parque del Retiro Madrid",i:"Spacer",w:"ok. 35 min (metro + pieszo)",md:"transit"},
+{t:"17:00",n:"Spacer Gran Vía i powrót do hotelu",tr:"Pieszo 25 min",q:"Gran Vía Madrid",w:"ok. 15 min pieszo"}]},
+{d:"Czwartek",dt:"15.10",s:[
+{t:"09:30",n:"Wyjście z hotelu",tr:"Metro 3: Plaza de España → Estación del Arte",q:H},
+{t:"10:00",n:"Muzeum Narodowe Centrum Sztuki Królowej Zofii",tr:"Metro 3",q:"Museo Nacional Centro de Arte Reina Sofía Madrid",w:"ok. 25 min metrem",md:"transit"},
+{t:"14:00",n:"Muzeum Prado",tr:"Pieszo 15 min",q:"Museo Nacional del Prado Madrid",pq:"Museo del Prado exterior fachada",w:"ok. 35 min (metro + pieszo)",md:"transit"},
+{t:"18:00",n:"Obiad – Viva Burger",tr:"Pieszo 20 min",q:"Viva Burger Madrid",w:"różnie, zależnie od lokalu",md:"transit"},
+{t:"19:00",n:"Spacer Gran Vía i powrót do hotelu",tr:"Pieszo 20 min",q:"Gran Vía Madrid",w:"ok. 15 min pieszo"}]},
+{d:"Piątek",dt:"16.10",s:[
+{t:"09:00",n:"Wyjście z hotelu",tr:"",q:H},
+{t:"09:30",n:"Museo Cerralbo",tr:"Pieszo 5 min",q:"Museo Cerralbo Madrid",i:"3 EUR · 09:30–15:00",w:"ok. 5 min pieszo"},
+{t:"11:30",n:"Świątynia Debod i Parque del Oeste",tr:"Spacer",q:"Templo de Debod Madrid",w:"ok. 10 min pieszo"},
+{t:"12:30",n:"Odbiór bagaży i wyjazd na lotnisko",tr:"Metro 10: Plaza de España → Nuevos Ministerios, linia 8 → Aeropuerto T4",q:"Aeropuerto Adolfo Suárez Madrid-Barajas",w:"ok. 40–50 min metrem",md:"transit"},
+{t:"15:35",n:"Lot powrotny do Polski",tr:"Samolot",q:"Aeropuerto Adolfo Suárez Madrid-Barajas",nr:1},
+{t:"20:17",n:"Pociąg Warszawa Zachodnia – Łódź Fabryczna",tr:"Pociąg",q:"Dworzec Warszawa Zachodnia",nr:1}]}];
+
+
+const $=id=>document.getElementById(id);
+const place=q=>M+"search/?api=1&query="+enc(q);
+const route=(q,md)=>M+"dir/?api=1&origin="+enc(H)+"&destination="+enc(q)+"&travelmode="+(md||"walking");
+const keys=[H,"Templo de Debod Madrid","Real Jardín Botánico Madrid","Parque del Retiro Madrid","Catedral de Toledo","Palacio Real de Madrid","Museo Reina Sofía Madrid","Museo del Prado Madrid","Museo Cerralbo Madrid"];
+$("all").href=M+"dir/"+keys.map(enc).join("/");
+function cat(s){const n=(s.n+" "+s.q).toLowerCase();
+ if(/obiad/.test(n))return["🍽️","Restauracja",1];
+ if(/hotel|suites/.test(n))return["🏨","Hotel",1];
+ if(/muzeum|museo/.test(n))return["🖼️","Muzeum",1];
+ if(/park|ogr|jard|taras/.test(n))return["🌳","Park / widok",1];
+ if(/katedra|basílica|klasztor|monasterio|synagoga|sinagoga|pustelnia|ermita|świątynia|templo/.test(n))return["⛪","Zabytek",1];
+ if(/pałac|palacio|alcázar/.test(n))return["🏰","Pałac / zamek",1];
+ if(/dworzec|atocha|estación|pociąg/.test(n))return["🚆","Dworzec",1];
+ if(/lotnisko|barajas/.test(n))return["✈️","Lotnisko",1];
+ return["📍","Miejsce",1]}
+const cache={};
+const BAD=/logo|map|plan|flag|coat|icon|locator|diagram|poster|plaque|signature|seal|banner/i;
+const wk=async(l,q)=>{try{const t=(await(await fetch(`https://${l}.wikipedia.org/w/api.php?action=query&list=search&srsearch=${enc(q)}&srlimit=1&format=json&origin=*`)).json()).query.search[0].title;
+ const m=await(await fetch(`https://${l}.wikipedia.org/api/rest_v1/page/media-list/${enc(t.replace(/ /g,"_"))}`)).json();
+ return m.items.filter(i=>i.type=="image"&&i.srcset&&!BAD.test(i.title||"")&&!/\.svg/i.test(i.srcset[0].src)).slice(0,8).map(i=>{const u=i.srcset[i.srcset.length-1].src;return {u:u.startsWith("//")?"https:"+u:u,t:i.title||""}})}catch(e){return[]}};
+const cm=async q=>{try{const r=await(await fetch(`https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrnamespace=6&gsrsearch=${enc(q)}&gsrlimit=20&prop=imageinfo&iiprop=url|mime|size&iiurlwidth=1200&format=json&origin=*`)).json();
+ const a=Object.values(r.query.pages).filter(p=>p.imageinfo&&!BAD.test(p.title||"")&&/jpeg|png/.test(p.imageinfo[0].mime)).map(p=>({t:p.title||"",u:p.imageinfo[0].thumburl,w:p.imageinfo[0].width,h:p.imageinfo[0].height}));
+ const g=a.filter(x=>x.w>=1600&&x.w>=x.h*1.3);return g.length?g:a}catch(e){return[]}};
+const nz=t=>t.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+const STOP=/^(del|los|las|museo|nacional|real|parque|plaza|madrid|templo|catedral|palacio|jardines|jardin|estacion|tren|monasterio|sinagoga|ermita|centro|arte|circulo|basilica|hotel|restaurante|toledo)$/;
+const OV={"Aeropuerto Adolfo Suárez Madrid-Barajas":[["barajas"]],"Plaza de Cánovas del Castillo Madrid":[["canovas"],["neptuno"],["neptune"]],"Palacio Real de Madrid":[["palacio","real"],["royal","palace"]],"Catedral de Toledo":[["catedral","toledo"],["cathedral","toledo"]],"Alcázar de Toledo":[["alcazar","toledo"]],"Estación de tren de Toledo":[["estacion","toledo"],["station","toledo"]],"Plaza de Zocodover Toledo":[["zocodover"]],"Plaza Mayor Madrid":[["plaza","mayor"]],"Gran Vía Madrid":[["gran","via"]],"Real Jardín Botánico Madrid":[["botanico"],["botanic"]],"Dworzec Łódź Fabryczna":[["fabryczna"]],"Dworzec Warszawa Zachodnia":[["zachodnia"]]};
+const NEED=(q,b)=>OV[q]||[nz(b).split(/[^a-z]+/).filter(w=>w.length>=3&&!STOP.test(w)).slice(0,3)];
+const DETL=/detail|detalle|close-?up|fragment|capital|window|ventana|door|puerta|portal|statue|estatua|sculpture|escultura|bust|busto|painting|cuadro|altar|retablo|ceiling|techo|inscription|plaque|l[aá]pida|tomb|sepulcro|relief|mosaic|fresco|coat|crest|escudo|lamp|fountain detail/i;
+const GOOD=/facade|fachada|exterior|view|vista|panoram|building|edificio|skyline|aerial|entrance|entrada|overview|plaza|park|garden|jard[ií]n|catedral|cathedral|palace|palacio|museo|museum/i;
+function photos(q,pq){return cache[q]??=(async()=>{const b=q.replace(/,.*$/,"").replace(/ (Madrid|Toledo)$/,"");let r=[];const al=NEED(q,b),ok=t=>{const n=nz(t);return al.some(g=>g.length&&g.every(w=>n.includes(w)))};
+ const clean=()=>{const m=new Map();r.forEach(x=>m.set(x.u,x));const a=[...m.values()].filter(x=>ok(x.t)),f=a.filter(x=>!DETL.test(x.t));return(f.length>=3?f:a).sort((x,y)=>GOOD.test(y.t)-GOOD.test(x.t))};
+ for(const f of [...(pq?[()=>cm(pq)]:[]),()=>cm(b+' incategory:"Featured pictures on Wikimedia Commons|Quality images"'),()=>cm(b+" exterior"),()=>cm(b),()=>wk("en",q),()=>wk("es",q)]){r=[...r,...await f()];if(clean().length>=6)break}
+ return clean().slice(0,8)})()}
+const used=new Set();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);
+ photos(e.target.dataset.q,e.target.dataset.pq).then(p=>{if(p[0]){const u=(p.find(x=>!used.has(x.u))||p[0]).u;used.add(u);const i=new Image();i.onload=()=>{e.target.append(i);e.target.classList.add("gr")};i.src=u}})}),{rootMargin:"200px"});
+let cur=0;
+D.forEach((x,i)=>{const b=document.createElement("button");b.textContent=x.d+" "+x.dt;b.className="btn chip";b.onclick=()=>{cur=i;draw();scrollTo(0,0)};$("chips").append(b)});
+function draw(){
+ [...$("chips").children].forEach((b,i)=>b.classList.toggle("on",i==cur));
+ const x=D[cur],qs=[...new Set(x.s.filter(s=>s.q&&!s.nr).map(s=>s.q))];
+ let h=`<div class="dh"><div><h2>${x.d}, ${x.dt}</h2></div><a class="btn sec" target="_blank" rel="noopener" href="${M+"dir/"+qs.map(enc).join("/")}">Trasa dnia ↗</a></div>`;
+ if(x.note)h+=`<div class="note">${x.note}</div>`;
+ h+='<div class="grid">';
+ x.s.forEach((s,j)=>{
+  if(!s.q){h+=`<div class="rw"><b>${s.t}</b> · ${s.n}${s.tr?" — "+s.tr:""}</div>`;return}
+  const [ic,ct,ph]=cat(s);
+  h+=`<div class="c" tabindex="0" role="button" data-j="${j}"><div class="im" ${ph?`data-q="${s.q}" data-pq="${s.pq||""}"`:""}>${ic}<span class="tag">${isDone(s)?"✓ ":""}${s.t}</span></div><div class="p">${s.n}</div><div class="q">${ct}</div></div>`});
+ $("m").innerHTML=h+"</div>";
+ document.querySelectorAll(".c").forEach(e=>e.onclick=()=>open(x.s[e.dataset.j]));
+ document.querySelectorAll(".im[data-q]").forEach(e=>io.observe(e));
+}
+function shut(){["pg","bk","bar"].forEach(i=>$(i).classList.remove("on"))}
+$("bk").onclick=shut;document.addEventListener("keydown",e=>e.key=="Escape"&&shut());
+const store={get:()=>{try{return JSON.parse(localStorage.getItem("mdone")||"{}")}catch(e){return{}}},set:o=>{try{localStorage.setItem("mdone",JSON.stringify(o))}catch(e){}}};
+let done=store.get();const isDone=s=>!!done[s.n+s.t];
+const LL={[H]:[40.4268,-3.7137],"Aeropuerto Adolfo Suárez Madrid-Barajas":[40.4936,-3.5668],"Ermita de San Antonio de la Florida Madrid":[40.4222,-3.7236],"Templo de Debod Madrid":[40.4240,-3.7176],"Plaza de Cánovas del Castillo Madrid":[40.4150,-3.6945],"Real Jardín Botánico Madrid":[40.4113,-3.6910],"Parque del Retiro Madrid":[40.4153,-3.6844],"Círculo de Bellas Artes Madrid":[40.4183,-3.6968],"Estación de Atocha Madrid":[40.4065,-3.6893],"Catedral de Toledo":[39.8571,-4.0242],"Alcázar de Toledo":[39.8586,-4.0225],"Plaza de Zocodover Toledo":[39.8583,-4.0230],"Monasterio de San Juan de los Reyes Toledo":[39.8579,-4.0316],"Sinagoga de Santa María la Blanca Toledo":[39.8574,-4.0293],"Estación de tren de Toledo":[39.8636,-4.0052],"Jardines de Sabatini Madrid":[40.4192,-3.7147],"Catedral de la Almudena Madrid":[40.4157,-3.7143],"Real Basílica de San Francisco el Grande Madrid":[40.4120,-3.7117],"Palacio Real de Madrid":[40.4180,-3.7143],"Plaza Mayor Madrid":[40.4155,-3.7074],"Gran Vía Madrid":[40.4200,-3.7060],"Museo Nacional Centro de Arte Reina Sofía Madrid":[40.4080,-3.6945],"Museo Nacional del Prado Madrid":[40.4138,-3.6921],"Museo Cerralbo Madrid":[40.4250,-3.7132],"Dworzec Łódź Fabryczna":[51.7688,19.4698],"Dworzec Warszawa Zachodnia":[52.2194,20.9650]};
+const FB={"🍽️":["1–1,5 h","Propozycja obiadu zaplanowana w trasie. W Hiszpanii obiad je się zwykle po 14:00, a kolację po 20:30, więc poza tymi porami część lokali ma mniejsze menu albo jest zamknięta.","Sprawdź godziny i menu w Mapach Google, a w święto 12.10 i w weekend rozważ rezerwację stolika."],
+"🏨":["—","Baza na cały pobyt, blisko Plaza de España, Parku Debod i stacji metra Ventura Rodríguez. Z hotelu dojdziesz pieszo do Pałacu Królewskiego i Gran Vía.","Zapytaj w recepcji o przechowanie bagażu w dniu wyjazdu i o godzinę wymeldowania."],
+"✈️":["—","Główne lotnisko Madrytu, połączone z centrum metrem (linia 8 do T4, jak w planie).","Na lotnisko zaplanuj zapas czasu i dojedź minimum 2 godziny przed odlotem."],
+"🚆":["15–30 min","Stacja kolejowa na trasie. Przed wejściem na peron zwykle obowiązuje kontrola bagażu.","Bądź na stacji z zapasem 15–20 minut i miej bilet w telefonie."]};
+const DET={
+"Ermita de San Antonio de la Florida Madrid":["30–45 min","Niewielka kaplica z końca XVIII wieku, zbudowana na zlecenie Karola IV. Jej wnętrze pokrywa kopuła ze freskami Francisca Goi, uznawana za jedno z najważniejszych dzieł artysty. Goya przedstawił cud świętego Antoniego z Padwy, ale postaci ustawił na balustradzie jak na prawdziwym tarasie, wśród ludzi z ówczesnego Madrytu. W kaplicy spoczywa także sam malarz. Obok stoi bliźniacza kaplica, w której odprawia się nabożeństwa.","Kopułę najlepiej oglądać z odchyloną głową. Godziny według planu: 09:30–20:00."],
+"Templo de Debod Madrid":["45–60 min","Starożytna egipska świątynia poświęcona Amonowi i Izydzie, zbudowana ok. II w. p.n.e. na południu Egiptu. W latach 60. XX wieku budowa tamy asuańskiej groziła jej zalaniem, więc Egipt podarował ją Hiszpanii w podziękowaniu za pomoc w ratowaniu zabytków Nubii. Świątynię rozebrano kamień po kamieniu i odbudowano w parku. Dziś to jedno z najpopularniejszych miejsc, z którego ogląda się zachód słońca nad Madrytem, a wieczorem jej sylwetka odbija się w sadzawkach.","Najpiękniej wygląda o zachodzie słońca. Wejście do środka bywa ograniczone, więc sprawdź godziny."],
+"Plaza de Cánovas del Castillo Madrid":["30–60 min","Plac z fontanną Neptuna z XVIII wieku, przy Paseo del Prado, w pobliżu Prado i hotelu Palace. 12 października to Święto Narodowe Hiszpanii (Fiesta Nacional), obchodzone paradą wojskową i uroczystościami z udziałem rodziny królewskiej.","Główna trasa parady zwykle prowadzi Paseo de la Castellana, więc w dniu wyjazdu sprawdź w lokalnych mediach, gdzie dokładnie odbywają się uroczystości. Część ulic jest zamknięta, a dojazd bywa utrudniony."],
+"Real Jardín Botánico Madrid":["1–1,5 h","Ogród botaniczny założony z inicjatywy Karola III, w obecnym miejscu przy Prado od 1781 roku. Rośnie tu kilka tysięcy gatunków roślin, rozmieszczonych na tarasach. Są też szklarnie i kolekcja bonsai. Ogród jest cichym, zielonym kontrastem dla pobliskich muzeów.","Godziny według planu: 10:00–19:00, w święto mogą być zmienione."],
+"Parque del Retiro Madrid":["1,5–2 h","Największy park w centrum Madrytu, dawniej ogrody królewskie, dostępne dla wszystkich od końca XIX wieku. Wraz z Paseo del Prado wpisano go na listę UNESCO. Do najważniejszych miejsc należą staw z pomnikiem Alfonsa XII, gdzie można wypożyczyć łódkę, szklany Palacio de Cristal, Palacio de Velázquez, ogród różany La Rosaleda i aleja posągów królów.","W niedzielę i święta jest tłoczno, a przy stawie grają uliczni muzycy."],
+"Círculo de Bellas Artes Madrid":["45–60 min","Modernistyczny budynek z 1926 roku, dzieło Antonia Palaciosa, siedziba klubu artystycznego. Na szczycie jest taras (azotea) z widokiem na dachy Madrytu, Gran Vía, Cibeles i okolice Pałacu Królewskiego. Alternatywą jest taras Palacio de Cibeles, dawnej poczty głównej.","Idź przed zachodem słońca. Z planu: bilet 3–6 EUR, 16:00–21:00."],
+"Estación de Atocha Madrid":["30–45 min","Największy dworzec Madrytu. W zabytkowej hali z XIX wieku rośnie tropikalny ogród z kilkoma tysiącami roślin i żółwiami w stawie. Z nowszej części odjeżdżają pociągi dużych prędkości AVE, a na pobliskiej stacji metra Estación del Arte łatwo się przesiąść.","Kup bilet do Toledo z wyprzedzeniem. Przed peronem jest kontrola bagażu."],
+"Catedral de Toledo":["1,5–2 h","Jedna z najważniejszych gotyckich katedr Hiszpanii, budowana od 1226 roku przez około 250 lat. Wnętrze to skarbiec: ołtarz główny, bogato rzeźbiony chór, kaplice, kapitularz i skarbiec z monstrancją Enrique de Arfe. Za ołtarzem znajduje się barokowy Transparente, w którym otwór w sklepieniu wpuszcza światło.","Weź audioprzewodnik. Godziny według planu: 10:00–18:30."],
+"Alcázar de Toledo":["45–60 min","Potężna twierdza górująca nad miastem, odbudowana po zniszczeniach z wojny domowej, w której była oblegana w 1936 roku. Mieści dziś Muzeum Armii. Z tarasów rozciąga się widok na miasto i rzekę Tag.","W planie to spacer, więc możesz obejrzeć budynek z zewnątrz, a wejście do muzeum traktować jako opcję."],
+"Plaza de Zocodover Toledo":["20–30 min","Główny plac starego Toledo, od wieków miejsce targów i spotkań. Stąd odchodzą uliczki do katedry i Alcázaru. To dobry przystanek na kawę i na zakup marcepanu (mazapán), regionalnego przysmaku.","Marcepan kupuj w cukierniach, a nie w pierwszych sklepikach z pamiątkami."],
+"Monasterio de San Juan de los Reyes Toledo":["45 min","Klasztor franciszkański z końca XV wieku, ufundowany przez Izabelę Kastylijską i Ferdynanda Aragońskiego. Wyróżnia się ozdobnym krużgankiem w stylu izabelińskim. Na fasadzie wiszą łańcuchy uwolnionych jeńców chrześcijańskich.","Bilet 4 EUR według planu."],
+"Sinagoga de Santa María la Blanca Toledo":["20–30 min","Dawna synagoga z XII–XIII wieku w stylu mudejar. We wnętrzu białe łuki podkowiaste spoczywają na ośmiobocznych filarach, co przypomina meczet. Z czasem budynek stał się kościołem. To pamiątka po okresie, gdy w Toledo obok siebie żyli chrześcijanie, muzułmanie i Żydzi.","Bilet 4 EUR według planu. Wnętrze jest małe, więc wystarczy krótka wizyta."],
+"Estación de tren de Toledo":["15 min","Dworzec w stylu neomudejar z początku XX wieku, ozdobiony płytkami i łukami. Stąd odjeżdża pociąg z powrotem do Madrytu.","Miej bilet powrotny w telefonie i bądź na stacji z zapasem czasu."],
+"Jardines de Sabatini Madrid":["30 min","Neoklasyczne ogrody przy Pałacu Królewskim, urządzone w latach 30. XX wieku na miejscu dawnych stajni. Symetryczne żywopłoty, fontanna i posągi królów dają piękny widok na fasadę pałacu. Wejście jest bezpłatne.","O poranku jest tu spokojnie i dobre światło do zdjęć."],
+"Catedral de la Almudena Madrid":["45 min","Katedra konsekrowana w 1993 roku przez Jana Pawła II, budowana około 110 lat. Fasada nawiązuje do baroku, wnętrze do neogotyku, a krypta jest neoromańska. Nowoczesne zdobienia sklepienia dodają jej niezwykłego charakteru.","Bilet 1 EUR według planu. Katedra stoi naprzeciw Pałacu Królewskiego."],
+"Real Basílica de San Francisco el Grande Madrid":["30–45 min","Bazylika z XVIII wieku z jedną z największych kopuł w Hiszpanii, o średnicy ok. 33 m. W kaplicach wiszą obrazy m.in. Goi i Zurbarána. Wnętrze jest kameralne i spokojne, w przeciwieństwie do tłoczniejszych miejsc.","Bilet 6 EUR według planu."],
+"Palacio Real de Madrid":["2–2,5 h","Oficjalna rezydencja królów Hiszpanii, choć rodzina królewska mieszka gdzie indziej. Pałac z XVIII wieku ma ponad 3 000 pomieszczeń, a dla zwiedzających udostępniono kilkadziesiąt. Warto zobaczyć Salę Tronową, Salę Porcelany i Zbrojownię Królewską. W Galerii Królewskich Kolekcji oglądasz skarby zgromadzone przez hiszpańskich monarchów.","Kup bilet online, żeby uniknąć kolejki. Duże plecaki trzeba zostawić w depozycie."],
+"Plaza Mayor Madrid":["45 min","Reprezentacyjny plac z XVII wieku, otoczony trzypiętrowymi kamienicami. Fasadę Casa de la Panadería zdobią freski, a pośrodku stoi pomnik Filipa III. Plac był sceną koronacji, igrzysk i egzekucji. Niedaleko leży Puerta del Sol z tablicą Kilometr Zero, posągiem niedźwiedzia i drzewa truskawkowego oraz zegarem, pod którym Hiszpanie jedzą winogrona w sylwestra.","Kawa na Plaza Mayor jest droższa niż w bocznych ulicach, np. przy Calle Cava Baja."],
+"Gran Vía Madrid":["45 min","Najsłynniejsza ulica Madrytu, otwarta w pierwszej połowie XX wieku. Zabudowana okazałymi gmachami w stylu art déco i eklektycznym, z teatrami, kinami i sklepami. Na jej początku stoi budynek Metropolis ze skrzydlatą rzeźbą na kopule.","Wieczorem ulica jest podświetlona i bardzo ruchliwa. Uważaj na kieszonkowców."],
+"Museo Nacional Centro de Arte Reina Sofía Madrid":["3 h","Muzeum sztuki XX wieku i współczesnej w dawnym szpitalu. Najsłynniejsze dzieło to Guernica Pabla Picassa, olbrzymi obraz z 1937 roku o bombardowaniu miasta w czasie wojny domowej. Znajdziesz też prace Salvadora Dalí, Joana Miró i Juana Gris.","Zacznij od Guernicy, bo później tłok jest większy. W jej sali nie wolno fotografować. Sprawdź bezpłatne godziny wejścia."],
+"Museo Nacional del Prado Madrid":["3–4 h","Jedno z najważniejszych muzeów sztuki na świecie, otwarte w 1819 roku. Zbiory obejmują malarstwo hiszpańskie, flamandzkie i włoskie. Najważniejsze obrazy to Las Meninas Velázqueza, Ogród rozkoszy ziemskich Boscha oraz Maja ubrana i Maja naga Goi, a także Trzeci maja 1808 w Madrycie.","Nie próbuj zobaczyć wszystkiego. Wybierz 8–10 dzieł i obejrzyj je spokojnie."],
+"Museo Cerralbo Madrid":["1 h","Muzeum w dawnym pałacu markiza de Cerralbo, który zgromadził kolekcję sztuki i zostawił ją państwu. Wnętrza z końca XIX wieku zachowały się niemal bez zmian, z salą balową, biblioteką i galeriami obrazów. To okazja, by poczuć atmosferę arystokratycznej rezydencji.","Z planu: 3 EUR, 09:30–15:00."]};
+const LONG={
+"Museo Nacional del Prado Madrid":[
+"<strong>Historia.</strong> Budynek zaprojektował w 1785 roku Juan de Villanueva dla Karola III, który chciał w nim urządzić gabinet historii naturalnej. Ostatecznie, z inicjatywy królowej Marii Izabeli de Braganza i Ferdynanda VII, otwarto tu w 1819 roku Królewskie Muzeum Malarstwa i Rzeźby. Zbiory zbudowali hiszpańscy królowie, wielcy kolekcjonerzy sztuki, więc Prado jest wyjątkowo bogate w dzieła Włochów, Flamandów i Hiszpanów. Mają tu kilka tysięcy obrazów, z których wystawiona jest tylko część.",
+"<strong>Velázquez.</strong> Diego Velázquez był nadwornym malarzem Filipa IV, a jego arcydzieło, Las Meninas z 1656 roku, jest sercem muzeum. Obraz przedstawia infantkę Małgorzatę w otoczeniu dam dworu, a w głębi widać samego malarza przy sztalugach i odbicie króla i królowej w lustrze. Warto stanąć przed nim na chwilę dłużej i obejść go dookoła, bo gra perspektywy zmienia się z każdej strony. Obok wiszą też Poddanie Bredy i portrety rodziny królewskiej.",
+"<strong>Goya.</strong> Francisco Goya ma w Prado wielką kolekcję, od jasnych kartonów do tapiserii po mroczne późne prace. Zobacz Maję ubraną i Maję nagą, a także dwa obrazy o powstaniu przeciw Napoleonowi: Dos de Mayo i Trzeci maja 1808. Na najniższym poziomie zwykle wystawiono Czarne obrazy, które Goya namalował na ścianach swojego domu pod koniec życia, m.in. Saturn pożerający swego syna.",
+"<strong>Bosch, Bruegel i Flamandowie.</strong> Ogród rozkoszy ziemskich Hieronymusa Boscha z przełomu XV i XVI wieku to trójdzielny ołtarz pełen groteskowych postaci, który ogląda się godzinami. W pobliżu wiszą Triumf śmierci Pietera Bruegla Starszego, Zdjęcie z krzyża Rogiera van der Weydena oraz obrazy Rubensa.",
+"<strong>Włosi i Grecy.</strong> Zobacz Tycjana, który malował dla Karola V i Filipa II, Tintoretta, Rafaela, Fra Angelica z Zwiastowaniem oraz El Greca, m.in. Szlachcica z ręką na piersi. W Prado jest też autoportret Albrechta Dürera z 1498 roku.",
+"<strong>Jak zwiedzać.</strong> Według planu masz tu cztery godziny, od 14:00 do 18:00. To za mało, żeby zobaczyć wszystko, więc wybierz 8–10 dzieł i zaplanuj trasę z planem muzeum w ręku. Zacznij od Velázqueza, potem przejdź do Goi, a na koniec zostaw Boscha. W ostatnich godzinach dnia wstęp bywa bezpłatny, ale kolejka jest wtedy długa, więc sprawdź godziny i kup bilet online. Duży plecak i parasol zostaw w szatni, a w środku skorzystaj z kawiarni, żeby odpocząć."],
+"Palacio Real de Madrid":[
+"<strong>Historia.</strong> Dawny Alcázar, rezydencja królów Hiszpanii od średniowiecza, spłonął w noc wigilijną 1734 roku. Filip V zlecił budowę nowego pałacu, który zaprojektował Filippo Juvarra, a po jego śmierci dzieło dokończył Giovanni Battista Sacchetti. Prace trwały do połowy XVIII wieku, a Karol III wprowadził się tu w 1764 roku. Pałac ma ponad 135 tysięcy metrów kwadratowych i ponad 3 000 pomieszczeń, co czyni go jednym z największych w Europie. Dziś służy do uroczystości państwowych, a rodzina królewska mieszka poza centrum, w pałacu Zarzuela.",
+"<strong>Schody i sala tronowa.</strong> Zwiedzanie zaczyna Wielka Klatka Schodowa z marmuru, która robi wrażenie rozmachem. Sala Tronowa jest ozdobiona freskiem Giambattisty Tiepola, przedstawiającym wielkość monarchii hiszpańskiej, oraz ogromnymi lustrami i czerwonym aksamitem. Tron wciąż pamięta ceremonie dworskie, a wokół stoją rzeźbione lwy.",
+"<strong>Wnętrza.</strong> Na trasie są Sala Gasparini z wyszukanymi sztukateriami i jedwabiem, Sala Porcelany wyłożona płytkami z królewskiej manufaktury oraz Sala Kolumn używana do uroczystości. Wnętrza pełne są zegarów, gobelinów i mebli, a na suficiach malowali m.in. Mengs i Tiepolo.",
+"<strong>Zbrojownia i apteka.</strong> Królewska Zbrojownia pokazuje zbroje i bronie, także z czasów Karola V. Zachowała się też Królewska Apteka, a pałac posiada instrumenty smyczkowe Stradivariusa, których dźwięk bywa wykorzystywany podczas koncertów.",
+"<strong>Galeria Królewskich Kolekcji.</strong> W planie masz ją razem z pałacem. To nowoczesne muzeum przy placu Armería, gdzie pokazują skarby zgromadzone przez monarchów: obrazy, meble, tkaniny i przedmioty codzienne, które pomagają zrozumieć dzieje dworu. Zwiedzanie warto zaczynać od niej, jeśli jesteś zmęczony, bo jest chłodniejsza i spokojniejsza niż pałac.",
+"<strong>Praktyka.</strong> Zaplanuj około dwóch godzin. W środku zwykle obowiązuje zakaz robienia zdjęć, a przy wejściu jest kontrola bezpieczeństwa i depozyt na duże plecaki. Kup bilet online, bo kolejki bywają długie. W wybrane dni miesiąca odbywa się uroczysta zmiana warty, więc sprawdź kalendarz na stronie pałacu. Po zwiedzaniu przespaceruj się do pobliskiego Plaza de Oriente."],
+"Museo Nacional Centro de Arte Reina Sofía Madrid":[
+"<strong>Budynek.</strong> Muzeum mieści się w dawnym Szpitalu Generalnym św. Karola, którego budowę zlecił w XVIII wieku Karol III, a projekt przygotował Francesco Sabatini. Szpital służył przez stulecia, a później przekształcono go w centrum sztuki, które od lat 90. XX wieku ma status muzeum narodowego. Do starego gmachu dobudowano nowoczesne skrzydło Jeana Nouvela, z charakterystycznym czerwonym dachem, a po fasadzie jeżdżą szklane windy.",
+"<strong>Guernica.</strong> Najważniejsze dzieło to Guernica Pabla Picassa, namalowana w 1937 roku na pawilon Hiszpanii na wystawie w Paryżu. To monumentalny, czarno-biały obraz o bombardowaniu baskijskiego miasteczka podczas hiszpańskiej wojny domowej. Płótno ma około 3,5 na 7,8 metra. Picasso zastrzegł, że obraz trafi do Hiszpanii dopiero wtedy, gdy wróci demokracja, więc przyjechał w 1981 roku, a w Reina Sofía wisi od 1992. Obok znajdziesz szkice i studia, które pomagają zrozumieć, jak rodził się obraz. Zwykle jest to sala 206 na drugim piętrze.",
+"<strong>Surrealiści i kubiści.</strong> Zobacz Salvadora Dalí, m.in. Wielkiego masturbatora z 1929 roku i Dziewczynę w oknie. Są też prace Joana Miró, Juana Gris i innych twórców kubizmu oraz awangardy. Nie zapomnij o sali z plakatami i dokumentami z czasów wojny domowej.",
+"<strong>Sztuka powojenna.</strong> Kolekcja obejmuje twórców takich jak Antoni Tàpies czy Eduardo Chillida, a także sztukę współczesną i fotografię. Ekspozycje zmieniają się, dlatego sprawdź plan muzeum przy wejściu.",
+"<strong>Jak zwiedzać.</strong> Plan przewiduje cztery godziny, od 10:00 do 14:00, co pozwoli spokojnie obejrzeć najważniejsze działy i zrobić przerwę. Zacznij od Guernicy, zanim zrobi się tłoczno, a potem idź według pięter. W sali z Guernicą nie wolno fotografować. W muzeum jest kawiarnia przy dziedzińcu Nouvela, szatnia i szafki. Muzeum jest zamknięte we wtorki, a w wybrane wieczory bywa bezpłatne, więc sprawdź godziny. O 14:00 masz zaplanowane Prado, dlatego wyjdź z zapasem 10–15 minut."],
+"Catedral de Toledo":[
+"<strong>Historia.</strong> Budowę rozpoczęto w 1226 roku za panowania Ferdynanda III, z udziałem arcybiskupa Rodriga Jiméneza de Rady. Katedra stanęła na miejscu dawnego meczetu, a wcześniej wizygockiego kościoła. Wzorowano się na francuskiej architekturze gotyckiej, a prace ukończono dopiero w 1493 roku, więc budowla łączy różne style. Toledo było centrum Kościoła w Hiszpanii, a arcybiskup Toledo nosi tytuł prymasa Hiszpanii.",
+"<strong>Wnętrze.</strong> Pięć naw wypełnia światło, które wpada przez witraże z XV i XVI wieku. Wysoki, złocony ołtarz główny pokrywają sceny z życia Chrystusa, a chór zdobią misternie rzeźbione stalle. Na niższych stallach przedstawiono zdobycie Granady, a górne wykonali Alonso Berruguete i Felipe Vigarny.",
+"<strong>Transparente.</strong> Za ołtarzem znajdziesz barokowy Transparente z XVIII wieku, dzieło Narcisa Tomé. W sklepieniu wycięto otwór, przez który słońce oświetla marmurowe rzeźby. Dla wielu zwiedzających to najbardziej niezwykły fragment katedry, bo kontrastuje z surowym gotykiem.",
+"<strong>Skarbiec i zakrystia.</strong> W skarbcu stoi złota monstrancja Enrique de Arfe z początku XVI wieku, którą w uroczystym pochodzie wynosi się w święto Bożego Ciała. Zakrystia to małe muzeum, w którym wiszą obrazy El Greca, m.in. Rozebranie Chrystusa, a także dzieła Goi i innych mistrzów.",
+"<strong>Kaplice.</strong> Zobacz Kaplicę Mozarabską, w której wciąż sprawuje się dawny obrządek, oraz salę kapitulną z bogato zdobionym drewnianym sufitem. Każda kaplica ma własną historię i grobowce możnych rodzin.",
+"<strong>Praktyka.</strong> Zaplanuj półtorej do dwóch godzin, według planu od 10:00 do 18:30. W kościele obowiązuje zasada skromnego ubioru, czyli zakryte ramiona i kolana. Weź audioprzewodnik, bo bez niego łatwo przeoczyć szczegóły. Po wyjściu możesz zjeść obiad w okolicy Zocodover."]};
+async function open(s){
+ const [ic,ct]=cat(s),isH=s.q==H,[czas,op,tip]=DET[s.q]||FB[ic]||[],ll=LL[s.q];
+ const sec=(t,v)=>v?`<div class="sec"><b>${t}</b>${v}</div>`:"";
+ const map=ll?`https://www.openstreetmap.org/export/embed.html?bbox=${ll[1]-.006},${ll[0]-.004},${ll[1]+.006},${ll[0]+.004}&layer=mapnik&marker=${ll[0]},${ll[1]}`:`https://www.google.com/maps?q=${enc(s.q)}&output=embed`;
+ $("pg").innerHTML=`<button class="btn ic cl" aria-label="Zamknij" onclick="shut()">✕</button><div class="gal" id="gal"><div>${ic}</div></div><div class="cnt" id="cnt"></div>
+ <div class="bd"><h3>${s.n}</h3><div class="kat">${ct} · w planie ${s.t}</div>${s.i?`<div class="big">${s.i}</div>`:""}
+ ${sec("O miejscu",LONG[s.q]?LONG[s.q].map(t=>`<p class="long">${t}</p>`).join(""):op?`<p class="long">${op}</p>`:"")}${sec("Czas zwiedzania",czas)}${sec("Porada",tip)}
+ ${sec("Adres",isH?H:s.q)}
+ ${s.w&&!isH?sec(s.md=="transit"?"Dojazd z hotelu":"Dojście z hotelu",s.w):""}${sec("Transport w planie",s.tr)}
+ <div class="sec"><b>Mapa</b><iframe src="${map}"></iframe></div></div>`;
+ $("bar").innerHTML=(isH||s.nr?"":`<a class="btn pri" target="_blank" rel="noopener" href="${route(s.q,s.md)}">Trasa z hotelu</a>`)+`<a class="btn sec" target="_blank" rel="noopener" href="${place(s.q)}">Mapy Google ↗</a><button class="btn ic ${isDone(s)?"pri":""}" id="dn" aria-label="Odhacz" onclick="tg()">✓</button>`;
+ window.tg=()=>{done[s.n+s.t]?delete done[s.n+s.t]:done[s.n+s.t]=1;store.set(done);$("dn").classList.toggle("pri",isDone(s));draw()};
+ $("pg").scrollTop=0;["pg","bk","bar"].forEach(i=>$(i).classList.add("on"));
+ const p=await photos(s.q,s.pq);if(!p.length)return;
+ const g=$("gal");g.innerHTML=p.map(u=>`<div class="gr" data-c="${u.t.replace(/^File:/,"").replace(/\.[a-z]+$/i,"").replace(/_/g," ").replace(/"/g,"")}"><img src="${u.u}" loading="lazy" alt="" onerror="this.parentNode.remove()"></div>`).join("");
+ const up=()=>{const k=Math.min(g.children.length-1,Math.round(g.scrollLeft/g.clientWidth));$("cnt").textContent=(k+1)+" / "+g.children.length+" · "+(g.children[k].dataset.c||"")};up();g.onscroll=up;
+}
+draw();
+</script></body></html>
