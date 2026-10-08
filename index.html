@@ -200,7 +200,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 
     <footer class="schedule-footer">
       <button type="button" id="favoriteButton" class="install-button">Dodaj do ulubionych</button>
-      <span class="last-updated">Aktualizacja: 7 października 2026</span>
+      <span class="last-updated">Aktualizacja: 8 października 2026</span>
     </footer>
   </main>
   <script>
@@ -252,10 +252,10 @@ function getDays(id) {
     item('Psychologia pracy', 'mgr W. Czaplińska · T-25', '10:30 – 12:45', 'blue', [id], 8)
   ];
 
-  if (id === 1) {
+  if (id === 5) {
     saturday.push(
-      item('Psychopatologia', 'dr M. Kornatowski · TA-2', '13:00 – 15:15', 'green', [1], 8, 1),
-      item('Psychopatologia', 'dr M. Kornatowski · TA-2', '18:00 – 20:15', 'green', [1], 8, 2)
+      item('Psychopatologia', 'dr M. Kornatowski · TA-2', '13:00 – 15:15', 'green', [5], 8, 1),
+      item('Psychopatologia', 'dr M. Kornatowski · TA-2', '18:00 – 20:15', 'green', [5], 8, 2)
     );
   } else if (id !== 3 && id !== 7) {
     saturday.push(item('Psychopatologia', 'dr M. Kornatowski · TA-2', '13:00 – 15:15', 'green', [id], 8));
@@ -316,8 +316,11 @@ function progress(item, id, day) {
   const pos = s.indexOf(id);
   const occurrence = item.occurrence || 1;
   if (pos < 0) return {number:0,total:item.totalSessions || s.length};
-  if (day === 'Sobota' && item.subject === 'Psychopatologia')
-    return {number:pos === 0 ? occurrence : pos + 2, total:8};
+  if (day === 'Sobota' && item.subject === 'Psychopatologia') {
+    if (pos < 3) return { number: pos + 1, total: 8 };
+    if (pos === 3) return { number: 3 + occurrence, total: 8 };
+    return { number: pos + 2, total: 8 };
+  }
   if (day === 'Niedziela' && item.subject === 'Psychologia pracy')
     return {number:pos * 2 + occurrence, total:8};
   return {number:pos + 1,total:item.totalSessions || s.length};
