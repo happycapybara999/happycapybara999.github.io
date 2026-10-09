@@ -61,7 +61,7 @@ button:not(.weekend-toggle):not(.day-toggle):not(.theme-toggle):hover { backgrou
 .header-badge { min-width: 30px; height: 22px; padding: 0 7px; display: inline-flex; align-items: center; justify-content: center; border-radius: 4px; color: #69737d; background: #eef1f4; font-family: inherit; font-size: var(--caption); line-height: 1; font-weight: 400; letter-spacing: 0; white-space: nowrap; }
 .mobile-header-details { display: none; }
 .divider { width: 1px; height: 18px; margin: 0 3px; background: #e2e6e9; }
-  .group-badge { color: #69737d; font-size: var(--caption); font-weight: 400; }
+.group-badge { color: #69737d; font-size: var(--caption); font-weight: 400; }
 .theme-toggle { width: 62px; height: 34px; margin-left: auto; padding: 0; display: flex; align-items: center; justify-content: flex-start; border: 2px solid #dfe4e8; border-radius: 999px; background: #fff; cursor: pointer; transition: background-color .15s ease, border-color .15s ease; }
 .theme-toggle:hover { background: #f3f5f6; border-color: #dfe4e8; }
 .theme-toggle:focus-visible { outline: 2px solid #8aa8c2; outline-offset: 2px; }
@@ -152,7 +152,6 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .column-arrow svg { width: 18px; height: 18px; }
 .theme-toggle-thumb { line-height: 1; font-size: 15px; }
 
-  
 /* Final visual corrections */
 .exercise-badge.session-badge { background: transparent !important; border: 1px solid currentColor !important; box-sizing: border-box; }
 .exercise-badge.session-badge + .session-badge { background: transparent !important; border: 1px solid currentColor !important; }
@@ -200,7 +199,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 
     <footer class="schedule-footer">
       <button type="button" id="favoriteButton" class="install-button">Dodaj do ulubionych</button>
-      <span class="last-updated">Aktualizacja: 8 października 2026</span>
+      <span class="last-updated">Aktualizacja: 9 października 2026</span>
     </footer>
   </main>
   <script>
@@ -219,73 +218,151 @@ const weekends = [
   { id: 10, date: '13–14 lutego' }
 ];
 
-const colors = {
-  healthSat: ['Psychologia zdrowia', 'mgr L. Kwiecińska · T-13', '08:00 – 10:15', 'pink'],
-  workSat: ['Psychologia pracy', 'mgr W. Czaplińska · T-25', '10:30 – 12:45', 'blue'],
-  psychSat: ['Psychopatologia', 'dr M. Kornatowski · TA-2', '13:00 – 15:15', 'green'],
-  economySat: ['Psychologia ekonomiczna', 'Brak informacji o prowadzącym · T-12', '15:30 – 17:45', 'orange'],
-  managementSat: ['Psychologia zarządzania', 'mgr W. Czaplińska · T-25', '18:00 – 20:15', 'yellow'],
-  businessSat: ['Przedsiębiorczość', 'dr B. Kowańska · T-23', '15:30 – 17:45', 'indigo'],
+const t = {
+  zdrSat: 'mgr L. Kwiecińska · T-13',
+  pracSat: 'mgr W. Czaplińska · T-25',
+  psychSat: 'dr M. Kornatowski · TA-2',
+  ekoSat: 'dr B. Kowańska · T-12',
+  zarzSat: 'mgr W. Czaplińska · T-25',
+  przedSat: 'dr B. Kowańska · T-23',
+  ekoSun: 'dr A. Opolska-Bielańska · Online',
+  zarzSun: 'dr M. Warowicki · Online',
+  zdrSun: 'dr M. Głowacka · Online',
+  psychSun: 'dr M. Kornatowski · Online',
+  pracSun: 'dr A. Furman · Online',
+  przedSun: 'dr B. Kowańska · Online',
 };
 
-function item(subject, teacher, time, color, sessions, totalSessions, occurrence) {
-  return { subject, teacher, time, color, sessions, totalSessions, occurrence };
+function item(subject, teacher, time, color, sessionNumber, totalSessions) {
+  return { subject, teacher, time, color, sessionNumber, totalSessions };
 }
 
 function getDays(id) {
   if (id === 10) return [];
 
-  if (id === 9) {
-    return [
-      { day: 'Sobota', classes: [
-        item('Psychologia zarządzania', 'mgr W. Czaplińska · Brak informacji o sali', '08:00 – 11:00', 'yellow', [9]),
-        item('Psychologia ekonomiczna', 'Brak informacji o prowadzącym · Brak informacji o sali', '11:10 – 14:10', 'orange', [9]),
-        item('Przedsiębiorczość', 'dr B. Kowańska · Brak informacji o sali', '15:15 – 16:00', 'indigo', [9]),
-        item('Psychopatologia', 'dr M. Kornatowski · Brak informacji o sali', '17:45 – 20:00', 'green', [9])
-      ]},
-      { day: 'Niedziela', classes: [] }
-    ];
-  }
-
-  const saturday = [
-    item(colors.healthSat[0], colors.healthSat[1], colors.healthSat[2], colors.healthSat[3], [id], 8),
-    item('Psychologia pracy', 'mgr W. Czaplińska · T-25', '10:30 – 12:45', 'blue', [id], 8)
+  const sunBase = [
+    item('Psychologia ekonomiczna', t.ekoSun, '08:00 – 09:30', 'orange', id, 8),
+    item('Psychologia zarządzania', t.zarzSun, '09:45 – 11:15', 'yellow', id, 8),
+    item('Psychologia zdrowia', t.zdrSun, '11:30 – 13:00', 'pink', id, 8),
+    item('Psychopatologia', t.psychSun, '13:30 – 15:00', 'green', id, 8)
   ];
 
-  if (id === 5) {
-    saturday.push(
-      item('Psychopatologia', 'dr M. Kornatowski · TA-2', '13:00 – 15:15', 'green', [5], 8, 1),
-      item('Psychopatologia', 'dr M. Kornatowski · TA-2', '18:00 – 20:15', 'green', [5], 8, 2)
-    );
-  } else if (id !== 3 && id !== 7) {
-    saturday.push(item('Psychopatologia', 'dr M. Kornatowski · TA-2', '13:00 – 15:15', 'green', [id], 8));
+  switch(id) {
+    case 1:
+      return [
+        { day: 'Sobota', classes: [
+          item('Psychologia zdrowia', t.zdrSat, '08:00 – 10:15', 'pink', 1, 8),
+          item('Psychologia pracy', t.pracSat, '10:30 – 12:45', 'blue', 1, 8),
+          item('Psychopatologia', t.psychSat, '13:00 – 15:15', 'green', 1, 8)
+        ]},
+        { day: 'Niedziela', classes: [
+          ...sunBase,
+          item('Psychologia pracy', t.pracSun, '15:15 – 16:45', 'blue', 1, 8),
+          item('Psychologia pracy', t.pracSun, '17:00 – 18:30', 'blue', 2, 8),
+          item('Przedsiębiorczość', t.przedSun, '18:45 – 20:15', 'indigo', 1, 4)
+        ]}
+      ];
+    case 2:
+      return [
+        { day: 'Sobota', classes: [
+          item('Psychologia zdrowia', t.zdrSat, '08:00 – 10:15', 'pink', 2, 8),
+          item('Psychologia pracy', t.pracSat, '10:30 – 12:45', 'blue', 2, 8),
+          item('Psychopatologia', t.psychSat, '13:00 – 15:15', 'green', 2, 8),
+          item('Psychologia ekonomiczna', t.ekoSat, '15:30 – 17:45', 'orange', 1, 5),
+          item('Psychologia zarządzania', t.zarzSat, '18:00 – 20:15', 'yellow', 1, 5)
+        ]},
+        { day: 'Niedziela', classes: [...sunBase] }
+      ];
+    case 3:
+      return [
+        { day: 'Sobota', classes: [
+          item('Psychologia zdrowia', t.zdrSat, '08:00 – 10:15', 'pink', 3, 8),
+          item('Psychologia pracy', t.pracSat, '10:30 – 12:45', 'blue', 3, 8),
+          item('Przedsiębiorczość', t.przedSat, '15:30 – 17:45', 'indigo', 1, 4)
+        ]},
+        { day: 'Niedziela', classes: [
+          ...sunBase,
+          item('Psychologia pracy', t.pracSun, '15:15 – 16:45', 'blue', 3, 8),
+          item('Psychologia pracy', t.pracSun, '17:00 – 18:30', 'blue', 4, 8),
+          item('Przedsiębiorczość', t.przedSun, '18:45 – 20:15', 'indigo', 2, 4)
+        ]}
+      ];
+    case 4:
+      return [
+        { day: 'Sobota', classes: [
+          item('Psychologia zdrowia', t.zdrSat, '08:00 – 10:15', 'pink', 4, 8),
+          item('Psychologia pracy', t.pracSat, '10:30 – 12:45', 'blue', 4, 8),
+          item('Psychopatologia', t.psychSat, '13:00 – 15:15', 'green', 3, 8),
+          item('Psychologia ekonomiczna', t.ekoSat, '15:30 – 17:45', 'orange', 2, 5),
+          item('Psychologia zarządzania', t.zarzSat, '18:00 – 20:15', 'yellow', 2, 5),
+          item('Przedsiębiorczość', t.przedSat, '19:00 – 19:45', 'indigo', 2, 4)
+        ]},
+        { day: 'Niedziela', classes: [...sunBase] }
+      ];
+    case 5:
+      return [
+        { day: 'Sobota', classes: [
+          item('Psychologia zdrowia', t.zdrSat, '08:00 – 10:15', 'pink', 5, 8),
+          item('Psychologia pracy', t.pracSat, '10:30 – 12:45', 'blue', 5, 8),
+          item('Psychopatologia', t.psychSat, '13:00 – 15:15', 'green', 4, 8),
+          item('Przedsiębiorczość', t.przedSat, '15:30 – 17:45', 'indigo', 3, 4),
+          item('Psychopatologia', t.psychSat, '18:00 – 20:15', 'green', 5, 8)
+        ]},
+        { day: 'Niedziela', classes: [
+          ...sunBase,
+          item('Psychologia pracy', t.pracSun, '15:15 – 16:45', 'blue', 5, 8),
+          item('Psychologia pracy', t.pracSun, '17:00 – 18:30', 'blue', 6, 8),
+          item('Przedsiębiorczość', t.przedSun, '18:45 – 20:15', 'indigo', 3, 4)
+        ]}
+      ];
+    case 6:
+      return [
+        { day: 'Sobota', classes: [
+          item('Psychologia zdrowia', t.zdrSat, '08:00 – 10:15', 'pink', 6, 8),
+          item('Psychologia pracy', t.pracSat, '10:30 – 12:45', 'blue', 6, 8),
+          item('Psychopatologia', t.psychSat, '13:00 – 15:15', 'green', 6, 8),
+          item('Psychologia ekonomiczna', t.ekoSat, '15:30 – 17:45', 'orange', 3, 5),
+          item('Psychologia zarządzania', t.zarzSat, '18:00 – 20:15', 'yellow', 3, 5)
+        ]},
+        { day: 'Niedziela', classes: [...sunBase] }
+      ];
+    case 7:
+      return [
+        { day: 'Sobota', classes: [
+          item('Psychologia zdrowia', t.zdrSat, '08:00 – 10:15', 'pink', 7, 8),
+          item('Psychologia pracy', t.pracSat, '10:30 – 12:45', 'blue', 7, 8),
+          item('Przedsiębiorczość', t.przedSat, '15:30 – 17:45', 'indigo', 4, 4)
+        ]},
+        { day: 'Niedziela', classes: [
+          ...sunBase,
+          item('Psychologia pracy', t.pracSun, '15:15 – 16:45', 'blue', 7, 8),
+          item('Psychologia pracy', t.pracSun, '17:00 – 18:30', 'blue', 8, 8),
+          item('Przedsiębiorczość', t.przedSun, '18:45 – 20:15', 'indigo', 4, 4)
+        ]}
+      ];
+    case 8:
+      return [
+        { day: 'Sobota', classes: [
+          item('Psychologia zdrowia', t.zdrSat, '08:00 – 10:15', 'pink', 8, 8),
+          item('Psychologia pracy', t.pracSat, '10:30 – 12:45', 'blue', 8, 8),
+          item('Psychopatologia', t.psychSat, '13:00 – 15:15', 'green', 7, 8),
+          item('Psychologia ekonomiczna', t.ekoSat, '15:30 – 17:45', 'orange', 4, 5),
+          item('Psychologia zarządzania', t.zarzSat, '18:00 – 20:15', 'yellow', 4, 5)
+        ]},
+        { day: 'Niedziela', classes: [...sunBase] }
+      ];
+    case 9:
+      return [
+        { day: 'Sobota', classes: [
+          item('Psychologia zarządzania', t.zarzSat, '08:00 – 11:00', 'yellow', 5, 5),
+          item('Psychologia ekonomiczna', t.ekoSat, '11:10 – 14:10', 'orange', 5, 5),
+          item('Psychopatologia', t.psychSat, '17:45 – 20:00', 'green', 8, 8)
+        ]},
+        { day: 'Niedziela', classes: [] }
+      ];
+    default:
+      return [];
   }
-
-  if ([2,4,6,8].includes(id)) {
-    saturday.push(
-      item(colors.economySat[0], colors.economySat[1], colors.economySat[2], colors.economySat[3], [id], 5),
-      item(colors.managementSat[0], colors.managementSat[1], colors.managementSat[2], colors.managementSat[3], [id], 5)
-    );
-  } else if ([3,5,7].includes(id)) {
-    saturday.push(item(colors.businessSat[0], colors.businessSat[1], colors.businessSat[2], colors.businessSat[3], [id], 4));
-  }
-
-  const sunday = [
-    item('Psychologia ekonomiczna', 'dr A. Opolska-Bielańska · Online', '08:00 – 09:30', 'orange', [id], 8),
-    item('Psychologia zarządzania', 'dr M. Warowicki · Online', '09:45 – 11:15', 'yellow', [id], 8),
-    item('Psychologia zdrowia', 'dr M. Głowacka · Online', '11:30 – 13:00', 'pink', [id], 8),
-    item('Psychopatologia', 'dr M. Kornatowski · Online', '13:30 – 15:00', 'green', [id], 8)
-  ];
-
-  if ([2,4,6,8].includes(id)) {
-    sunday.push(item('Przedsiębiorczość', 'dr B. Kowańska · Online', '15:15 – 16:45', 'indigo', [id], 4));
-  } else if ([1,3,5,7].includes(id)) {
-    sunday.push(
-      item('Psychologia pracy', 'dr A. Furman · Online', '15:15 – 16:45', 'blue', [id], 8, 1),
-      item('Psychologia pracy', 'dr A. Furman · Online', '17:00 – 18:30', 'blue', [id], 8, 2)
-    );
-  }
-  return [{day:'Sobota', classes:saturday}, {day:'Niedziela', classes:sunday}];
 }
 
 const schedule = weekends.map(w => ({...w, days:getDays(w.id)}));
@@ -295,48 +372,6 @@ function minutes(time) {
   return m[0] * 60 + m[1];
 }
 function range(time) { return time.split('–').map(s => s.trim()); }
-
-function courseSchedule(subject, day) {
-  if (day === 'Sobota') {
-    if (['Psychologia zdrowia','Psychologia pracy'].includes(subject)) return [1,2,3,4,5,6,7,8];
-    if (subject === 'Psychopatologia') return [1,2,4,5,6,8,9];
-    if (['Psychologia ekonomiczna','Psychologia zarządzania'].includes(subject)) return [2,4,6,8,9];
-    if (subject === 'Przedsiębiorczość') return [3,5,7,9];
-  }
-  if (day === 'Niedziela') {
-    if (subject === 'Psychologia pracy') return [1,3,5,7];
-    if (subject === 'Przedsiębiorczość') return [2,4,6,8];
-    return [1,2,3,4,5,6,7,8];
-  }
-  return [];
-}
-
-function progress(item, id, day) {
-  const s = courseSchedule(item.subject, day);
-  const pos = s.indexOf(id);
-  const occurrence = item.occurrence || 1;
-  if (pos < 0) return {number:0,total:item.totalSessions || s.length};
-  if (day === 'Sobota' && item.subject === 'Psychopatologia') {
-    if (pos < 3) return { number: pos + 1, total: 8 };
-    if (pos === 3) return { number: 3 + occurrence, total: 8 };
-    return { number: pos + 2, total: 8 };
-  }
-  if (day === 'Niedziela' && item.subject === 'Psychologia pracy')
-    return {number:pos * 2 + occurrence, total:8};
-  return {number:pos + 1,total:item.totalSessions || s.length};
-}
-
-function scheduled(item, day, id) {
-  if (day === 'Sobota') {
-    if (['Psychologia zdrowia','Psychologia pracy'].includes(item.subject)) return id <= 8;
-    if (item.subject === 'Psychopatologia') return [1,2,4,5,6,8,9].includes(id);
-    if (['Psychologia zarządzania','Psychologia ekonomiczna'].includes(item.subject)) return [2,4,6,8,9].includes(id);
-    if (item.subject === 'Przedsiębiorczość') return [3,5,7,9].includes(id);
-  }
-  if (day === 'Niedziela' && item.subject === 'Psychologia pracy') return [1,3,5,7].includes(id);
-  if (day === 'Niedziela' && item.subject === 'Przedsiębiorczość') return [2,4,6,8,10].includes(id);
-  return item.sessions.includes(id);
-}
 
 const monthNumbers = { 'października':9, 'listopada':10, 'grudnia':11, 'stycznia':0, 'lutego':1 };
 function weekendStart(dateText) {
@@ -382,41 +417,40 @@ function withBreaks(classes) {
   });
 }
 
-function renderClass(x,id,day,dateText) {
-  const p=progress(x,id,day);
-  const active=classActive(dateText,day,x.time);
-  const sundayLecture=day==='Niedziela' && x.subject!=='Psychologia pracy';
-  const saturdayExercise=day==='Sobota';
-  const sundayWork=day==='Niedziela' && x.subject==='Psychologia pracy';
+function renderClass(x, id, day, dateText) {
+  const active = classActive(dateText, day, x.time);
+  const sundayLecture = day === 'Niedziela' && x.subject !== 'Psychologia pracy';
+  const saturdayExercise = day === 'Sobota';
+  const sundayWork = day === 'Niedziela' && x.subject === 'Psychologia pracy';
 
-  return `<article class="class-card ${x.color}${active?' is-active':''}">
+  return `<article class="class-card ${x.color}${active ? ' is-active' : ''}">
     <time>${x.time}</time>
     <div class="class-info">
       <div class="class-title-row">
         <div class="class-title">
-          <h4>${active?'<span class="active-dot" aria-label="Trwa teraz"></span>':''}${x.subject}</h4>
-          ${sundayLecture?'<span class="lecture-badge" data-tooltip="Wykład" aria-label="Wykład">W</span>':''}
-          ${saturdayExercise?'<span class="exercise-badge session-badge" data-tooltip="Ćwiczenia" aria-label="Ćwiczenia">ĆW</span>':''}
-          ${sundayWork?'<span class="exercise-badge session-badge" data-tooltip="Konwersatorium" aria-label="Konwersatorium">KW</span>':''}
-          <span class="session-badge ${saturdayExercise || sundayWork ? 'exercise-session' : ''}" aria-label="Spotkanie ${p.number} z ${p.total}">${p.number}/${p.total}</span>
+          <h4>${active ? '<span class="active-dot" aria-label="Trwa teraz"></span>' : ''}${x.subject}</h4>
+          ${sundayLecture ? '<span class="lecture-badge" data-tooltip="Wykład" aria-label="Wykład">W</span>' : ''}
+          ${saturdayExercise ? '<span class="exercise-badge session-badge" data-tooltip="Ćwiczenia" aria-label="Ćwiczenia">ĆW</span>' : ''}
+          ${sundayWork ? '<span class="exercise-badge session-badge" data-tooltip="Konwersatorium" aria-label="Konwersatorium">KW</span>' : ''}
+          <span class="session-badge ${saturdayExercise || sundayWork ? 'exercise-session' : ''}" aria-label="Spotkanie ${x.sessionNumber} z ${x.totalSessions}">${x.sessionNumber}/${x.totalSessions}</span>
         </div>
       </div>
       <p>${x.teacher}</p>
     </div>
-    ${sundayLecture || sundayWork ?'<button type="button" class="teams-button" data-tooltip="Dostępne wkrótce" aria-label="Otwórz Teams"><img src="./Microsoft_Teams.png" width="20" height="20" alt="Microsoft Teams"><span>Otwórz Teams</span></button>':''}
+    ${sundayLecture || sundayWork ? '<button type="button" class="teams-button" data-tooltip="Dostępne wkrótce" aria-label="Otwórz Teams"><img src="./Microsoft_Teams.png" width="20" height="20" alt="Microsoft Teams"><span>Otwórz Teams</span></button>' : ''}
   </article>`;
 }
 
-function renderDay(day,id,dateText) {
-  const classes=day.classes.filter(x=>scheduled(x,day.day,id));
-  const content=classes.length
-    ? `<div class="class-list">${withBreaks(classes).map(x=>x.type==='break'
+function renderDay(day, id, dateText) {
+  const classes = day.classes;
+  const content = classes.length
+    ? `<div class="class-list">${withBreaks(classes).map(x => x.type === 'break'
         ? `<article class="break-card"><time>${x.time}</time><div class="break-info"><strong>Przerwa</strong></div><div class="break-content-mobile"><h4>Przerwa</h4></div></article>`
-        : renderClass(x,id,day.day,dateText)).join('')}</div>`
+        : renderClass(x, id, day.day, dateText)).join('')}</div>`
     : `<p class="empty-day-message">Brak zajęć w ten dzień</p>`;
-  const activeDay=classes.some(x=>classActive(dateText,day.day,x.time));
+  const activeDay = classes.some(x => classActive(dateText, day.day, x.time));
   return `<section class="day-section">
-    <div class="day-toggle"><strong>${activeDay?'<span class="active-dot" aria-label="Trwa teraz"></span>':''}${day.day}</strong></div>
+    <div class="day-toggle"><strong>${activeDay ? '<span class="active-dot" aria-label="Trwa teraz"></span>' : ''}${day.day}</strong></div>
     <div class="day-content">${content}</div>
   </section>`;
 }
