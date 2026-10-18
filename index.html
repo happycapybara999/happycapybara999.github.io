@@ -164,7 +164,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 <style>
 .exercise-badge { border: 1px solid currentColor !important; background: transparent !important; }
 .break-card { opacity: 1 !important; }
-.class-card.is-past { opacity: 0.5; }
+.class-card.is-past, .break-card.is-past { opacity: 0.5 !important; }
 </style>
 </head>
 <body>
@@ -447,7 +447,7 @@ function renderDay(day, id, dateText) {
   const classes = day.classes;
   const content = classes.length
     ? `<div class="class-list">${withBreaks(classes).map(x => x.type === 'break'
-        ? `<article class="break-card"><time>${x.time}</time><div class="break-info"><strong>Przerwa</strong></div><div class="break-content-mobile"><h4>Przerwa</h4></div></article>`
+        ? `<article class="break-card${classPast(dateText, day.day, x.time) ? ' is-past' : ''}"><time>${x.time}</time><div class="break-info"><strong>Przerwa</strong></div><div class="break-content-mobile"><h4>Przerwa</h4></div></article>`
         : renderClass(x, id, day.day, dateText)).join('')}</div>`
     : `<p class="empty-day-message">Brak zajęć w ten dzień</p>`;
   const activeDay = classes.some(x => classActive(dateText, day.day, x.time));
@@ -612,22 +612,10 @@ document.getElementById('favoriteButton').addEventListener('click',()=>{
 
 render();
 
-setTimeout(() => {
-  scrollColumn(currentColumn);
-  const activeColumn = scheduleEl.children[currentColumn];
-  if (activeColumn) {
-    const firstActive = activeColumn.querySelector('.class-card:not(.is-past)');
-    if (firstActive) {
-      const headerOffset = 80;
-      const elementPosition = firstActive.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-      window.scrollTo({
-         top: offsetPosition,
-         behavior: 'smooth'
-      });
-    }
-  }
-}, 100);
+const initialTarget = scheduleEl.children[currentColumn];
+if (initialTarget) {
+  scheduleEl.scrollTo({ left: initialTarget.offsetLeft, behavior: 'auto' });
+}
 
   </script>
 </body>
