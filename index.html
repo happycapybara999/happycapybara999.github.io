@@ -197,6 +197,10 @@ a, button { -webkit-tap-highlight-color: transparent; }
     </footer>
   </main>
   <script>
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+document.documentElement.style.scrollBehavior = 'auto';
 window.scrollTo(0, 0);
 
 const weekends = [
@@ -612,10 +616,16 @@ document.getElementById('favoriteButton').addEventListener('click',()=>{
 
 render();
 
+scheduleEl.style.scrollSnapType = 'none';
 const initialTarget = scheduleEl.children[currentColumn];
 if (initialTarget) {
-  scheduleEl.scrollTo({ left: initialTarget.offsetLeft, behavior: 'auto' });
+  scheduleEl.scrollLeft = initialTarget.offsetLeft;
 }
+
+requestAnimationFrame(() => {
+  document.documentElement.style.scrollBehavior = '';
+  scheduleEl.style.scrollSnapType = '';
+});
 
   </script>
 </body>
