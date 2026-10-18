@@ -17,9 +17,9 @@ html { background: var(--background); }
 :root[data-theme="dark"] body { background: #000; color: var(--foreground); }
 :root[data-theme="dark"] .schedule-header { background: rgba(0,0,0,.96); border-color: #252525; }
 :root[data-theme="dark"] .weekend-toggle, :root[data-theme="dark"] .day-toggle { background: #111; }
-:root[data-theme="dark"] .brand-mark, :root[data-theme="dark"] .weekend-card, :root[data-theme="dark"] .class-card, :root[data-theme="dark"] .install-button, :root[data-theme="dark"] .teams-button { border-color: #333; background: #111; }
+:root[data-theme="dark"] .brand-mark, :root[data-theme="dark"] .weekend-card, :root[data-theme="dark"] .class-card, :root[data-theme="dark"] .install-button { border-color: #333; background: #111; }
 :root[data-theme="dark"] .schedule-header h1, :root[data-theme="dark"] .schedule-heading h2, :root[data-theme="dark"] .weekend-toggle strong { color: #f3f6fa; }
-:root[data-theme="dark"] .group-badge, :root[data-theme="dark"] .weekend-toggle div span, :root[data-theme="dark"] .day-toggle, :root[data-theme="dark"] .class-card time, :root[data-theme="dark"] .class-info p, :root[data-theme="dark"] .install-button, :root[data-theme="dark"] .teams-button { color: #b8c3d0; }
+:root[data-theme="dark"] .group-badge, :root[data-theme="dark"] .weekend-toggle div span, :root[data-theme="dark"] .day-toggle, :root[data-theme="dark"] .class-card time, :root[data-theme="dark"] .class-info p, :root[data-theme="dark"] .install-button { color: #b8c3d0; }
 :root[data-theme="dark"] .header-badge { color: #c0cad6; background: #1b1b1b; font-weight: 400; }
 :root[data-theme="dark"] .group-badge { font-weight: 400; }
 :root[data-theme="dark"] .class-title-row h4 { color: #e7edf4; }
@@ -36,14 +36,13 @@ html { background: var(--background); }
 :root[data-theme="dark"] .divider, :root[data-theme="dark"] .brand-mark { border-color: #333; }
 :root[data-theme="dark"] .weekend-content { border-color: #252525; }
 :root[data-theme="dark"] .day-section { border-color: #252525; }
-:root[data-theme="dark"] .lecture-badge::after, :root[data-theme="dark"] .exercise-badge::after, :root[data-theme="dark"] .teams-button::after { color: #111827 !important; background: #fff !important; }
+:root[data-theme="dark"] .lecture-badge::after, :root[data-theme="dark"] .exercise-badge::after { color: #111827 !important; background: #fff !important; }
 
 :root[data-theme="dark"] .brand-mark { color: #fff; background: linear-gradient(115deg, #7b18c9 0%, #4b2fd0 38%, #3d55d9 68%, #8a36c7 100%); background-size: 180% 180%; background-position: center; }
 :root[data-theme="dark"] .column-arrow { background: transparent; }
 :root[data-theme="dark"] .theme-toggle { border-color: #444; background: #111; box-shadow: none; }
 :root[data-theme="dark"] .theme-toggle:hover { background: #1b1b1b; border-color: #555; }
 :root[data-theme="dark"] .theme-toggle-thumb { color: #fff; background: transparent; }
-:root[data-theme="dark"] .teams-button::after { color: #000; background: #fff; }
 
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--background); color: var(--foreground); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
@@ -124,11 +123,6 @@ button:not(.weekend-toggle):not(.day-toggle):not(.theme-toggle):hover { backgrou
 .exercise-badge { border: 1px solid currentColor !important; background: transparent !important; }
 .lecture-badge::after, .exercise-badge::after { content: attr(data-tooltip); position: absolute; z-index: 10; left: 50%; bottom: calc(100% + 7px); padding: 6px 8px; border-radius: 5px; color: #fff; background: #111827; font-size: var(--caption); font-weight: 400; opacity: 0; pointer-events: none; transform: translate(-50%, 3px); transition: opacity .15s ease, transform .15s ease; width: max-content; white-space: nowrap; }
 .lecture-badge:hover::after, .lecture-badge:focus-visible::after, .exercise-badge:hover::after, .exercise-badge:focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
-.teams-button { position: relative; height: 40px; align-self: center; display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; gap: 7px; padding: 0 12px; border: 2px solid #dfe4e8; border-radius: 8px; color: #59636e; background: #fff; cursor: help; font-family: inherit; font-size: var(--body); font-weight: 400; text-align: center; white-space: nowrap; }
-.teams-button img { width: 20px; height: 20px; flex: 0 0 20px; object-fit: contain; }
-.teams-button::after { content: attr(data-tooltip); position: absolute; z-index: 10; left: 50%; bottom: calc(100% + 7px); width: max-content; padding: 6px 8px; border-radius: 5px; color: #fff; background: #111827; font-size: var(--caption); font-weight: 400; opacity: 0; pointer-events: none; transform: translate(-50%, 3px); transition: opacity .15s ease, transform .15s ease; }
-.teams-button:hover::after, .teams-button:focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
-.teams-button:focus-visible { outline: 2px solid #8aa8c2; outline-offset: 2px; }
 .class-info p { overflow: hidden; margin: 4px 0 0; color: #7a838c; font-size: var(--body); text-overflow: ellipsis; white-space: nowrap; }
 .class-card.pink::before { background: #f28ab5; }.class-card.blue::before { background: #1976d2; }.class-card.green::before { background: #16a06f; }.class-card.orange::before { background: #f97316; }.class-card.yellow::before { background: #facc15; }.class-card.indigo::before { background: #6d28d9; }
 .break-card { position: relative; min-height: 60px; padding: 12px 16px; padding-left: 28px; display: flex; align-items: center; border: 1px dashed #cbd5e1; border-radius: 8px; background: #f8fafc; color: #7a838c; }
@@ -143,7 +137,7 @@ button:not(.weekend-toggle):not(.day-toggle):not(.theme-toggle):hover { backgrou
 .install-button { height: 40px; display: inline-flex; align-items: center; justify-content: center; padding: 0 12px; border: 2px solid #dfe4e8; border-radius: 8px; color: #59636e; background: #fff; font-family: inherit; font-size: var(--body); font-weight: 400; text-align: center; cursor: pointer; transition: background-color .15s ease, border-color .15s ease, color .15s ease; }
 .install-button:focus-visible { outline: 2px solid #8aa8c2; outline-offset: 2px; }
 @media (max-width: 600px) { .schedule-footer { padding: 18px 16px 16px; }.install-button { width: 100%; } }
-@media (max-width: 600px) { .desktop-header-details { display: none; }.mobile-header-details { display: inline-flex; }.header-details { margin-left: 8px; }.header-inner, .schedule-container { width: 100%; margin: 0; padding-left: 16px; padding-right: 16px; }.schedule-container { width: 100%; padding-top: 25px; }.weekend-list { gap: 16px; margin: 0; padding: 0; scroll-snap-type: x mandatory; scroll-padding-inline: 0; touch-action: pan-x pan-y; }.weekend-card { flex: 0 0 100%; min-width: 100%; opacity: 1; scroll-snap-align: start; scroll-snap-stop: always; }.weekend-content { padding: 0 12px 14px; }.weekend-toggle { padding: 13px 14px; }.weekend-heading { min-width: 0; flex: 1; }.weekend-heading strong { font-size: var(--subtitle); }.class-card { align-items: flex-start; flex-direction: column; gap: 7px; padding: 12px 16px; padding-left: 28px; }.class-card time { width: auto; flex-basis: auto; font-size: var(--body); }.break-card { align-items: flex-start; flex-direction: column; gap: 7px; padding: 12px 16px; padding-left: 28px; }.break-card time { width: auto; flex-basis: auto; }.break-card .break-info { display: none; }.break-card .break-content-mobile { display: block; width: 100%; }.break-card .break-content-mobile h4 { margin: 0; font-size: var(--subtitle); font-weight: 600; color: #7a838c; }.class-title-row { align-items: flex-start; }.class-title-row h4 { white-space: normal; }.class-info { width: 100%; }.teams-button { width: 100%; align-self: stretch; } }
+@media (max-width: 600px) { .desktop-header-details { display: none; }.mobile-header-details { display: inline-flex; }.header-details { margin-left: 8px; }.header-inner, .schedule-container { width: 100%; margin: 0; padding-left: 16px; padding-right: 16px; }.schedule-container { width: 100%; padding-top: 25px; }.weekend-list { gap: 16px; margin: 0; padding: 0; scroll-snap-type: x mandatory; scroll-padding-inline: 0; touch-action: pan-x pan-y; }.weekend-card { flex: 0 0 100%; min-width: 100%; opacity: 1; scroll-snap-align: start; scroll-snap-stop: always; }.weekend-content { padding: 0 12px 14px; }.weekend-toggle { padding: 13px 14px; }.weekend-heading { min-width: 0; flex: 1; }.weekend-heading strong { font-size: var(--subtitle); }.class-card { align-items: flex-start; flex-direction: column; gap: 7px; padding: 12px 16px; padding-left: 28px; }.class-card time { width: auto; flex-basis: auto; font-size: var(--body); }.break-card { align-items: flex-start; flex-direction: column; gap: 7px; padding: 12px 16px; padding-left: 28px; }.break-card time { width: auto; flex-basis: auto; }.break-card .break-info { display: none; }.break-card .break-content-mobile { display: block; width: 100%; }.break-card .break-content-mobile h4 { margin: 0; font-size: var(--subtitle); font-weight: 600; color: #7a838c; }.class-title-row { align-items: flex-start; }.class-title-row h4 { white-space: normal; }.class-info { width: 100%; } }
 @media (prefers-color-scheme: dark) { :root { color-scheme: light; } }
 
 /* Static GitHub Pages adjustments */
@@ -170,7 +164,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 <style>
 .exercise-badge { border: 1px solid currentColor !important; background: transparent !important; }
 .break-card { opacity: 1 !important; }
-.teams-button img { width: 20px; height: 20px; object-fit: contain; flex: 0 0 20px; }
+.class-card.is-past { opacity: 0.5; }
 </style>
 </head>
 <body>
@@ -199,7 +193,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 
     <footer class="schedule-footer">
       <button type="button" id="favoriteButton" class="install-button">Dodaj do ulubionych</button>
-      <span class="last-updated">Aktualizacja: 9 października 2026</span>
+      <span class="last-updated">Aktualizacja: 18 października 2026</span>
     </footer>
   </main>
   <script>
@@ -375,7 +369,9 @@ function range(time) { return time.split('–').map(s => s.trim()); }
 
 const monthNumbers = { 'października':9, 'listopada':10, 'grudnia':11, 'stycznia':0, 'lutego':1 };
 function weekendStart(dateText) {
-  const [day, month] = dateText.split('–')[0].trim().split(' ');
+  const parts = dateText.split(' ');
+  const day = parts[0].split('–')[0].trim();
+  const month = parts[1].trim();
   const year = monthNumbers[month] < 6 ? 2027 : 2026;
   return new Date(year, monthNumbers[month], Number(day), 0, 0, 0, 0);
 }
@@ -393,6 +389,14 @@ function classActive(dateText, day, time, now = new Date()) {
   const a = new Date(dayDate); a.setHours(Math.floor(from/60),from%60,0,0);
   const b = new Date(dayDate); b.setHours(Math.floor(to/60),to%60,0,0);
   return now >= a && now < b;
+}
+function classPast(dateText, day, time, now = new Date()) {
+  const start = weekendStart(dateText);
+  const dayDate = new Date(start);
+  if (day === 'Niedziela') dayDate.setDate(start.getDate()+1);
+  const [from,to] = range(time).map(minutes);
+  const b = new Date(dayDate); b.setHours(Math.floor(to/60),to%60,0,0);
+  return now >= b;
 }
 
 function iconArrow(dir) {
@@ -419,11 +423,11 @@ function withBreaks(classes) {
 
 function renderClass(x, id, day, dateText) {
   const active = classActive(dateText, day, x.time);
-  const sundayLecture = day === 'Niedziela' && x.subject !== 'Psychologia pracy';
+  const past = classPast(dateText, day, x.time);
+  const sundayLecture = day === 'Niedziela';
   const saturdayExercise = day === 'Sobota';
-  const sundayWork = day === 'Niedziela' && x.subject === 'Psychologia pracy';
 
-  return `<article class="class-card ${x.color}${active ? ' is-active' : ''}">
+  return `<article class="class-card ${x.color}${active ? ' is-active' : ''}${past ? ' is-past' : ''}">
     <time>${x.time}</time>
     <div class="class-info">
       <div class="class-title-row">
@@ -431,13 +435,11 @@ function renderClass(x, id, day, dateText) {
           <h4>${active ? '<span class="active-dot" aria-label="Trwa teraz"></span>' : ''}${x.subject}</h4>
           ${sundayLecture ? '<span class="lecture-badge" data-tooltip="Wykład" aria-label="Wykład">W</span>' : ''}
           ${saturdayExercise ? '<span class="exercise-badge session-badge" data-tooltip="Ćwiczenia" aria-label="Ćwiczenia">ĆW</span>' : ''}
-          ${sundayWork ? '<span class="exercise-badge session-badge" data-tooltip="Konwersatorium" aria-label="Konwersatorium">KW</span>' : ''}
-          <span class="session-badge ${saturdayExercise || sundayWork ? 'exercise-session' : ''}" aria-label="Spotkanie ${x.sessionNumber} z ${x.totalSessions}">${x.sessionNumber}/${x.totalSessions}</span>
+          <span class="session-badge ${saturdayExercise ? 'exercise-session' : ''}" aria-label="Spotkanie ${x.sessionNumber} z ${x.totalSessions}">${x.sessionNumber}/${x.totalSessions}</span>
         </div>
       </div>
       <p>${x.teacher}</p>
     </div>
-    ${sundayLecture || sundayWork ? '<button type="button" class="teams-button" data-tooltip="Dostępne wkrótce" aria-label="Otwórz Teams"><img src="./Microsoft_Teams.png" width="20" height="20" alt="Microsoft Teams"><span>Otwórz Teams</span></button>' : ''}
   </article>`;
 }
 
@@ -455,7 +457,18 @@ function renderDay(day, id, dateText) {
   </section>`;
 }
 
-let currentColumn=0;
+function getNearestWeekendIndex() {
+  const now = new Date();
+  for (let i = 0; i < schedule.length; i++) {
+    const start = weekendStart(schedule[i].date);
+    const end = new Date(start);
+    end.setDate(start.getDate()+2);
+    if (now < end) return i;
+  }
+  return schedule.length > 0 ? schedule.length - 1 : 0;
+}
+
+let currentColumn = getNearestWeekendIndex();
 const scheduleEl = document.getElementById('schedule');
 let scrollTimer = null;
 function buildScheduleMarkup() {
@@ -598,6 +611,23 @@ document.getElementById('favoriteButton').addEventListener('click',()=>{
 });
 
 render();
+
+setTimeout(() => {
+  scrollColumn(currentColumn);
+  const activeColumn = scheduleEl.children[currentColumn];
+  if (activeColumn) {
+    const firstActive = activeColumn.querySelector('.class-card:not(.is-past)');
+    if (firstActive) {
+      const headerOffset = 80;
+      const elementPosition = firstActive.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+         top: offsetPosition,
+         behavior: 'smooth'
+      });
+    }
+  }
+}, 100);
 
   </script>
 </body>
