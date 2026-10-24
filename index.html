@@ -87,7 +87,8 @@ button:not(.weekend-toggle):not(.day-toggle):not(.theme-toggle):hover { backgrou
 .weekend-toggle strong { display: inline-flex; align-items: center; gap: 8px; color: #17202a; font-size: var(--title); font-weight: 650; }
 .day-toggle strong { display: inline-flex; align-items: center; gap: 8px; }
 
-.active-dot { width: 7px; height: 7px; flex: 0 0 7px; display: inline-block; border-radius: 50%; background: #36a269; box-shadow: 0 0 0 0 rgba(54, 162, 105, .45); animation: active-pulse 1.8s ease-out infinite; margin-left: 5px; margin-right: 6px; }
+/* Zmodyfikowana klasa z margin-left: 5px zapobiegającym ucinaniu */
+.active-dot { width: 7px; height: 7px; flex: 0 0 7px; display: inline-block; border-radius: 50%; background: #36a269; box-shadow: 0 0 0 0 rgba(54, 162, 105, .45); animation: active-pulse 1.8s ease-out infinite; margin-left: 5px; }
 @keyframes active-pulse { 0% { box-shadow: 0 0 0 0 rgba(54, 162, 105, .45); } 70% { box-shadow: 0 0 0 5px rgba(54, 162, 105, 0); } 100% { box-shadow: 0 0 0 0 rgba(54, 162, 105, 0); } }
 
 .weekend-toggle div span { color: #7a838c; font-size: 13px; font-weight: 450; }
@@ -109,6 +110,7 @@ button:not(.weekend-toggle):not(.day-toggle):not(.theme-toggle):hover { backgrou
 .class-card time { width: 150px; flex: 0 0 150px; color: #4c5660; font-family: "Roboto Mono", ui-monospace, monospace; font-size: var(--body); font-weight: 550; }
 .class-info { min-width: 0; flex: 1; align-self: center; }
 .class-title-row { display: flex; align-items: center; gap: 12px; }
+.class-info p { margin-top: 4px; }
 .class-title-row .class-title { min-width: 0; }
 .class-title-row h4 { max-width: 100%; }
 .class-title { min-width: 0; display: flex; align-items: center; gap: 4px; }
@@ -124,8 +126,7 @@ button:not(.weekend-toggle):not(.day-toggle):not(.theme-toggle):hover { backgrou
 .exercise-badge { border: 1px solid currentColor !important; background: transparent !important; }
 .lecture-badge::after, .exercise-badge::after { content: attr(data-tooltip); position: absolute; z-index: 10; left: 50%; bottom: calc(100% + 7px); padding: 6px 8px; border-radius: 5px; color: #fff; background: #111827; font-size: var(--caption); font-weight: 400; opacity: 0; pointer-events: none; transform: translate(-50%, 3px); transition: opacity .15s ease, transform .15s ease; width: max-content; white-space: nowrap; }
 .lecture-badge:hover::after, .lecture-badge:focus-visible::after, .exercise-badge:hover::after, .exercise-badge:focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
-.class-info p { margin: 4px 0 0; color: #7a838c; font-size: var(--body); display: flex; align-items: center; overflow: visible; }
-.teacher-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.class-info p { overflow: hidden; margin: 4px 0 0; color: #7a838c; font-size: var(--body); text-overflow: ellipsis; white-space: nowrap; }
 .class-card.pink::before { background: #f28ab5; }.class-card.blue::before { background: #1976d2; }.class-card.green::before { background: #16a06f; }.class-card.orange::before { background: #f97316; }.class-card.yellow::before { background: #facc15; }.class-card.indigo::before { background: #6d28d9; }
 .break-card { position: relative; min-height: 60px; padding: 12px 16px; padding-left: 28px; display: flex; align-items: center; border: 1px dashed #cbd5e1; border-radius: 8px; background: #f8fafc; color: #7a838c; }
 .break-card::before { content: ""; width: 4px; position: absolute; left: 12px; top: 12px; bottom: 12px; border-radius: 999px; opacity: 0; }
@@ -347,4 +348,287 @@ function getDays(id) {
           item('Psychologia pracy', t.pracSat, '10:30 – 12:45', 'blue', 8, 8),
           item('Psychopatologia', t.psychSat, '13:00 – 15:15', 'green', 7, 8),
           item('Psychologia ekonomiczna', t.ekoSat, '15:30 – 17:45', 'orange', 4, 5),
-          item('Psychologia zarządzania', t.zarzSat, '18:00 – 20:15', 'yellow',
+          item('Psychologia zarządzania', t.zarzSat, '18:00 – 20:15', 'yellow', 4, 5)
+        ]},
+        { day: 'Niedziela', classes: [...sunBase] }
+      ];
+    case 9:
+      return [
+        { day: 'Sobota', classes: [
+          item('Psychologia zarządzania', t.zarzSat, '08:00 – 11:00', 'yellow', 5, 5),
+          item('Psychologia ekonomiczna', t.ekoSat, '11:10 – 14:10', 'orange', 5, 5),
+          item('Psychopatologia', t.psychSat, '17:45 – 20:00', 'green', 8, 8)
+        ]},
+        { day: 'Niedziela', classes: [] }
+      ];
+    default:
+      return [];
+  }
+}
+
+const schedule = weekends.map(w => ({...w, days:getDays(w.id)}));
+
+function minutes(time) {
+  const m = time.split(':').map(Number);
+  return m[0] * 60 + m[1];
+}
+function range(time) { return time.split('–').map(s => s.trim()); }
+
+const monthNumbers = { 'października':9, 'listopada':10, 'grudnia':11, 'stycznia':0, 'lutego':1 };
+function weekendStart(dateText) {
+  const parts = dateText.split(' ');
+  const day = parts[0].split('–')[0].trim();
+  const month = parts[1].trim();
+  const year = monthNumbers[month] < 6 ? 2027 : 2026;
+  return new Date(year, monthNumbers[month], Number(day), 0, 0, 0, 0);
+}
+function weekendActive(dateText, now = new Date()) {
+  const start = weekendStart(dateText), end = new Date(start);
+  end.setDate(start.getDate()+2);
+  return now >= start && now < end;
+}
+function classActive(dateText, day, time, now = new Date()) {
+  if (!weekendActive(dateText, now)) return false;
+  const start = weekendStart(dateText);
+  const dayDate = new Date(start);
+  if (day === 'Niedziela') dayDate.setDate(start.getDate()+1);
+  const [from,to] = range(time).map(minutes);
+  const a = new Date(dayDate); a.setHours(Math.floor(from/60),from%60,0,0);
+  const b = new Date(dayDate); b.setHours(Math.floor(to/60),to%60,0,0);
+  return now >= a && now < b;
+}
+function classPast(dateText, day, time, now = new Date()) {
+  const start = weekendStart(dateText);
+  const dayDate = new Date(start);
+  if (day === 'Niedziela') dayDate.setDate(start.getDate()+1);
+  const [from,to] = range(time).map(minutes);
+  const b = new Date(dayDate); b.setHours(Math.floor(to/60),to%60,0,0);
+  return now >= b;
+}
+
+function iconArrow(dir) {
+  return dir === 'left'
+    ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>'
+    : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>';
+}
+
+function iconTheme(dark) {
+  return dark 
+    ? '<span class="theme-icon"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>'
+    : '<span class="theme-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></span>';
+}
+
+function withBreaks(classes) {
+  const sorted = [...classes].sort((a,b)=>minutes(range(a.time)[0])-minutes(range(b.time)[0]));
+  return sorted.flatMap((x,i)=>{
+    const next=sorted[i+1];
+    if(!next) return [x];
+    const gap=minutes(range(next.time)[0])-minutes(range(x.time)[1]);
+    return gap >= 30 ? [x,{type:'break',time:`${range(x.time)[1]} – ${range(next.time)[0]}`}] : [x];
+  });
+}
+
+function renderClass(x, id, day, dateText) {
+  const active = classActive(dateText, day, x.time);
+  const past = classPast(dateText, day, x.time);
+  const sundayLecture = day === 'Niedziela';
+  const saturdayExercise = day === 'Sobota';
+
+  return `<article class="class-card ${x.color}${active ? ' is-active' : ''}${past ? ' is-past' : ''}">
+    <time>${x.time}</time>
+    <div class="class-info">
+      <div class="class-title-row">
+        <div class="class-title">
+          ${active ? '<span class="active-dot" aria-label="Trwa teraz"></span>' : ''}
+          <h4>${x.subject}</h4>
+          ${sundayLecture ? '<span class="lecture-badge" data-tooltip="Wykład" aria-label="Wykład">W</span>' : ''}
+          ${saturdayExercise ? '<span class="exercise-badge session-badge" data-tooltip="Ćwiczenia" aria-label="Ćwiczenia">ĆW</span>' : ''}
+          <span class="session-badge ${saturdayExercise ? 'exercise-session' : ''}" aria-label="Spotkanie ${x.sessionNumber} z ${x.totalSessions}">${x.sessionNumber}/${x.totalSessions}</span>
+        </div>
+      </div>
+      <p>${x.teacher}</p>
+    </div>
+  </article>`;
+}
+
+function renderDay(day, id, dateText) {
+  const classes = day.classes;
+  const content = classes.length
+    ? `<div class="class-list">${withBreaks(classes).map(x => x.type === 'break'
+        ? `<article class="break-card${classPast(dateText, day.day, x.time) ? ' is-past' : ''}"><time>${x.time}</time><div class="break-info"><strong>Przerwa</strong></div><div class="break-content-mobile"><h4>Przerwa</h4></div></article>`
+        : renderClass(x, id, day.day, dateText)).join('')}</div>`
+    : `<p class="empty-day-message">Brak zajęć w ten dzień</p>`;
+  return `<section class="day-section">
+    <div class="day-toggle"><strong>${day.day}</strong></div>
+    <div class="day-content">${content}</div>
+  </section>`;
+}
+
+function getNearestWeekendIndex() {
+  const now = new Date();
+  for (let i = 0; i < schedule.length; i++) {
+    const start = weekendStart(schedule[i].date);
+    const end = new Date(start);
+    end.setDate(start.getDate()+2);
+    if (now < end) return i;
+  }
+  return schedule.length > 0 ? schedule.length - 1 : 0;
+}
+
+let currentColumn = getNearestWeekendIndex();
+const scheduleEl = document.getElementById('schedule');
+let scrollTimer = null;
+function buildScheduleMarkup() {
+  return schedule.map((w,i)=>{
+    const days=w.days.length
+      ? `<div class="weekend-content">${w.days.map(d=>renderDay(d,w.id,w.date)).join('')}</div>`
+      : `<div class="empty-state">Szczegóły zajęć zostaną dodane wkrótce.</div>`;
+    return `<section class="weekend-card${w.id===1?' is-nearest':''}${i===currentColumn?' is-main':''}" data-index="${i}">
+      <div class="weekend-toggle">
+        <button type="button" class="column-arrow column-arrow-left" aria-label="Poprzedni zjazd" data-column="${i-1}" ${i===0?'disabled':''}>${iconArrow('left')}</button>
+        <div class="weekend-heading"><strong>Zjazd ${w.id}</strong><span>${w.date}</span></div>
+        <button type="button" class="column-arrow column-arrow-right" aria-label="Następny zjazd" data-column="${i+1}" ${i===schedule.length-1?'disabled':''}>${iconArrow('right')}</button>
+      </div>${days}
+    </section>`;
+  }).join('');
+}
+
+function updateOpacity(list) {
+  const cards = [...list.children];
+  if (!cards.length) return;
+  const viewportCenter = list.scrollLeft + list.clientWidth / 2;
+  const fadeDistance = Math.max(list.clientWidth * 0.66, cards[0].offsetWidth * 0.95);
+  cards.forEach((card) => {
+    const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+    const distance = Math.abs(cardCenter - viewportCenter);
+    const progress = Math.max(0, 1 - distance / fadeDistance);
+    const opacity = 0.25 + 0.75 * progress;
+    card.style.setProperty('--card-opacity', opacity.toFixed(3));
+  });
+}
+
+function updateMainColumn(nextIndex) {
+  currentColumn=Math.max(0,Math.min(schedule.length-1,nextIndex));
+  [...scheduleEl.children].forEach((card,i)=>{
+    card.classList.toggle('is-main', i===currentColumn);
+    const left=card.querySelector('.column-arrow-left');
+    const right=card.querySelector('.column-arrow-right');
+    if(left) left.disabled = i===0;
+    if(right) right.disabled = i===scheduleEl.children.length-1;
+  });
+  updateOpacity(scheduleEl);
+}
+
+function render() {
+  scheduleEl.innerHTML=buildScheduleMarkup();
+  updateMainColumn(currentColumn);
+  updateOpacity(scheduleEl);
+}
+
+function nearestColumn(list) {
+  const cards=[...list.children];
+  if(!cards.length)return 0;
+  const center=list.scrollLeft + list.clientWidth/2;
+  return cards.reduce((best,c,i)=>Math.abs((c.offsetLeft+c.offsetWidth/2)-center)<Math.abs((cards[best].offsetLeft+cards[best].offsetWidth/2)-center)?i:best,0);
+}
+
+function scrollColumn(i) {
+  const index=Math.max(0,Math.min(schedule.length-1,i));
+  const target=scheduleEl.children[index];
+  if(!target)return;
+  updateMainColumn(index);
+  scheduleEl.scrollTo({left:target.offsetLeft,behavior:'smooth'});
+}
+
+function selectColumn(i){ scrollColumn(i); }
+
+scheduleEl.addEventListener('click', e=>{
+  const arrow=e.target.closest('.column-arrow');
+  if(arrow){ e.preventDefault(); e.stopPropagation(); if(!arrow.disabled) scrollColumn(Number(arrow.dataset.column)); return; }
+  const card=e.target.closest('.weekend-card');
+  if(card && !drag.moved) scrollColumn(Number(card.dataset.index));
+});
+
+scheduleEl.addEventListener('scroll',()=>{
+  updateOpacity(scheduleEl);
+  const index = nearestColumn(scheduleEl);
+  if (index !== currentColumn) updateMainColumn(index);
+});
+window.addEventListener('resize',()=>{ updateOpacity(scheduleEl); updateMainColumn(nearestColumn(scheduleEl)); });
+
+let drag={active:false,moved:false,startX:0,startScroll:0};
+scheduleEl.addEventListener('pointerdown',e=>{
+  if(e.pointerType==='mouse'||e.target.closest('button'))return;
+  drag={active:true,moved:false,startX:e.clientX,startScroll:scheduleEl.scrollLeft};
+  scheduleEl.setPointerCapture(e.pointerId);
+});
+scheduleEl.addEventListener('pointermove',e=>{
+  if(!drag.active)return;
+  const dx=e.clientX-drag.startX;
+  if(Math.abs(dx)>4)drag.moved=true;
+  scheduleEl.scrollLeft=drag.startScroll-dx;
+});
+function endDrag(e){
+  if(!drag.active)return;
+  drag.active=false;
+  try{scheduleEl.releasePointerCapture(e.pointerId)}catch(_){ }
+  if(!drag.moved)return;
+  scrollColumn(nearestColumn(scheduleEl));
+}
+scheduleEl.addEventListener('pointerup',endDrag);
+scheduleEl.addEventListener('pointercancel',endDrag);
+
+function setTheme(dark, save = false) {
+  document.documentElement.dataset.theme=dark?'dark':'light';
+  document.documentElement.style.colorScheme=dark?'dark':'light';
+  if(save) {
+    localStorage.setItem('schedule-theme',dark?'dark':'light');
+  }
+  const b=document.getElementById('themeToggle');
+  b.setAttribute('aria-label',dark?'Włącz jasny motyw':'Włącz ciemny motyw');
+  b.setAttribute('aria-pressed',dark?'true':'false');
+  const thumb = b.querySelector('.theme-toggle-thumb');
+  thumb.classList.toggle('is-dark', dark);
+  thumb.innerHTML=iconTheme(dark);
+}
+
+const saved=localStorage.getItem('schedule-theme');
+const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+if(saved) {
+  setTheme(saved === 'dark', false);
+} else {
+  setTheme(darkModeMediaQuery.matches, false);
+}
+
+darkModeMediaQuery.addEventListener('change', (e) => {
+  if(!localStorage.getItem('schedule-theme')) {
+    setTheme(e.matches, false);
+  }
+});
+
+document.getElementById('themeToggle').addEventListener('click',()=>{
+  const isDark = document.documentElement.dataset.theme !== 'dark';
+  setTheme(isDark, true);
+});
+
+document.getElementById('favoriteButton').addEventListener('click',()=>{
+  alert('Aby dodać stronę do ulubionych, użyj skrótu Ctrl+D (Windows/Linux) lub ⌘+D (Mac).');
+});
+
+render();
+
+scheduleEl.style.scrollSnapType = 'none';
+const initialTarget = scheduleEl.children[currentColumn];
+if (initialTarget) {
+  scheduleEl.scrollLeft = initialTarget.offsetLeft;
+}
+
+requestAnimationFrame(() => {
+  document.documentElement.style.scrollBehavior = '';
+  scheduleEl.style.scrollSnapType = '';
+});
+
+  </script>
+</body>
+</html>
