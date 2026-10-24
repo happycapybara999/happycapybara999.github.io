@@ -86,8 +86,11 @@ button:not(.weekend-toggle):not(.day-toggle):not(.theme-toggle):hover { backgrou
 
 .weekend-toggle strong { display: inline-flex; align-items: center; gap: 8px; color: #17202a; font-size: var(--title); font-weight: 650; }
 .day-toggle strong { display: inline-flex; align-items: center; gap: 8px; }
-.active-dot { width: 7px; height: 7px; flex: 0 0 7px; display: inline-block; border-radius: 50%; background: #36a269; box-shadow: 0 0 0 0 rgba(54, 162, 105, .45); animation: active-pulse 1.8s ease-out infinite; }
+
+/* Zmodyfikowana klasa z margin-left: 5px zapobiegającym ucinaniu */
+.active-dot { width: 7px; height: 7px; flex: 0 0 7px; display: inline-block; border-radius: 50%; background: #36a269; box-shadow: 0 0 0 0 rgba(54, 162, 105, .45); animation: active-pulse 1.8s ease-out infinite; margin-left: 5px; }
 @keyframes active-pulse { 0% { box-shadow: 0 0 0 0 rgba(54, 162, 105, .45); } 70% { box-shadow: 0 0 0 5px rgba(54, 162, 105, 0); } 100% { box-shadow: 0 0 0 0 rgba(54, 162, 105, 0); } }
+
 .weekend-toggle div span { color: #7a838c; font-size: 13px; font-weight: 450; }
 .chevron-box { width: 28px; height: 28px; display: grid; place-items: center; color: #929aa2; }
 .weekend-toggle[aria-expanded="true"] .chevron-box svg, .day-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
@@ -436,7 +439,8 @@ function renderClass(x, id, day, dateText) {
     <div class="class-info">
       <div class="class-title-row">
         <div class="class-title">
-          <h4>${active ? '<span class="active-dot" aria-label="Trwa teraz"></span>' : ''}${x.subject}</h4>
+          ${active ? '<span class="active-dot" aria-label="Trwa teraz"></span>' : ''}
+          <h4>${x.subject}</h4>
           ${sundayLecture ? '<span class="lecture-badge" data-tooltip="Wykład" aria-label="Wykład">W</span>' : ''}
           ${saturdayExercise ? '<span class="exercise-badge session-badge" data-tooltip="Ćwiczenia" aria-label="Ćwiczenia">ĆW</span>' : ''}
           <span class="session-badge ${saturdayExercise ? 'exercise-session' : ''}" aria-label="Spotkanie ${x.sessionNumber} z ${x.totalSessions}">${x.sessionNumber}/${x.totalSessions}</span>
@@ -454,9 +458,8 @@ function renderDay(day, id, dateText) {
         ? `<article class="break-card${classPast(dateText, day.day, x.time) ? ' is-past' : ''}"><time>${x.time}</time><div class="break-info"><strong>Przerwa</strong></div><div class="break-content-mobile"><h4>Przerwa</h4></div></article>`
         : renderClass(x, id, day.day, dateText)).join('')}</div>`
     : `<p class="empty-day-message">Brak zajęć w ten dzień</p>`;
-  const activeDay = classes.some(x => classActive(dateText, day.day, x.time));
   return `<section class="day-section">
-    <div class="day-toggle"><strong>${activeDay ? '<span class="active-dot" aria-label="Trwa teraz"></span>' : ''}${day.day}</strong></div>
+    <div class="day-toggle"><strong>${day.day}</strong></div>
     <div class="day-content">${content}</div>
   </section>`;
 }
@@ -477,14 +480,13 @@ const scheduleEl = document.getElementById('schedule');
 let scrollTimer = null;
 function buildScheduleMarkup() {
   return schedule.map((w,i)=>{
-    const active=weekendActive(w.date);
     const days=w.days.length
       ? `<div class="weekend-content">${w.days.map(d=>renderDay(d,w.id,w.date)).join('')}</div>`
       : `<div class="empty-state">Szczegóły zajęć zostaną dodane wkrótce.</div>`;
     return `<section class="weekend-card${w.id===1?' is-nearest':''}${i===currentColumn?' is-main':''}" data-index="${i}">
       <div class="weekend-toggle">
         <button type="button" class="column-arrow column-arrow-left" aria-label="Poprzedni zjazd" data-column="${i-1}" ${i===0?'disabled':''}>${iconArrow('left')}</button>
-        <div class="weekend-heading"><strong>${active?'<span class="active-dot" aria-label="Trwa teraz"></span>':''}Zjazd ${w.id}</strong><span>${w.date}</span></div>
+        <div class="weekend-heading"><strong>Zjazd ${w.id}</strong><span>${w.date}</span></div>
         <button type="button" class="column-arrow column-arrow-right" aria-label="Następny zjazd" data-column="${i+1}" ${i===schedule.length-1?'disabled':''}>${iconArrow('right')}</button>
       </div>${days}
     </section>`;
