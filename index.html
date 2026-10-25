@@ -87,8 +87,8 @@ button:not(.weekend-toggle):not(.day-toggle):not(.theme-toggle):hover { backgrou
 .weekend-toggle strong { display: inline-flex; align-items: center; gap: 8px; color: #17202a; font-size: var(--title); font-weight: 650; }
 .day-toggle strong { display: inline-flex; align-items: center; gap: 8px; }
 
-/* Zmodyfikowana klasa z margin-left: 5px zapobiegającym ucinaniu */
-.active-dot { width: 7px; height: 7px; flex: 0 0 7px; display: inline-block; border-radius: 50%; background: #36a269; box-shadow: 0 0 0 0 rgba(54, 162, 105, .45); animation: active-pulse 1.8s ease-out infinite; margin-left: 5px; }
+/* Kropka zajęć ułożona absolutnie (aby nie wypychała nazwy przedmiotu) */
+.active-dot { position: absolute; left: -15px; top: 50%; transform: translateY(-50%); width: 7px; height: 7px; border-radius: 50%; background: #36a269; box-shadow: 0 0 0 0 rgba(54, 162, 105, .45); animation: active-pulse 1.8s ease-out infinite; }
 @keyframes active-pulse { 0% { box-shadow: 0 0 0 0 rgba(54, 162, 105, .45); } 70% { box-shadow: 0 0 0 5px rgba(54, 162, 105, 0); } 100% { box-shadow: 0 0 0 0 rgba(54, 162, 105, 0); } }
 
 .weekend-toggle div span { color: #7a838c; font-size: 13px; font-weight: 450; }
@@ -113,7 +113,7 @@ button:not(.weekend-toggle):not(.day-toggle):not(.theme-toggle):hover { backgrou
 .class-info p { margin-top: 4px; }
 .class-title-row .class-title { min-width: 0; }
 .class-title-row h4 { max-width: 100%; }
-.class-title { min-width: 0; display: flex; align-items: center; gap: 4px; }
+.class-title { min-width: 0; display: flex; align-items: center; gap: 4px; position: relative; } /* Dodane position: relative pod active-dot */
 .class-title-row h4 { overflow: hidden; margin: 0; color: #1c2731; font-size: var(--subtitle); font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
 .session-badge, .lecture-badge { min-width: 30px; height: 22px; padding: 0 7px; display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; border: 0; border-radius: 4px; color: #59636e; background: #edf0f2; font-family: inherit; font-size: var(--caption); line-height: 1; font-weight: 400; white-space: nowrap; }
 .class-card.pink .session-badge, .class-card.pink .lecture-badge { color: #b64072; background: #fbe1eb; }
@@ -196,7 +196,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 
     <footer class="schedule-footer">
       <button type="button" id="favoriteButton" class="install-button">Dodaj do ulubionych</button>
-      <span class="last-updated">Aktualizacja: 18 października 2026</span>
+      <span class="last-updated">Aktualizacja: 25 października 2026</span>
     </footer>
   </main>
   <script>
@@ -223,7 +223,7 @@ const t = {
   zdrSat: 'mgr L. Kwiecińska · T-13',
   pracSat: 'mgr W. Czaplińska · T-25',
   psychSat: 'dr M. Kornatowski · TA-2',
-  ekoSat: 'dr B. Kowańska · T-12',
+  ekoSat: 'dr B. Kowańska · T-23',
   zarzSat: 'mgr W. Czaplińska · T-25',
   przedSat: 'dr B. Kowańska · T-23',
   ekoSun: 'dr A. Opolska-Bielańska · Online',
