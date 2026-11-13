@@ -87,14 +87,11 @@ button:not(.weekend-toggle):not(.day-toggle):not(.theme-toggle):hover { backgrou
 .weekend-toggle strong { display: inline-flex; align-items: center; gap: 8px; color: #17202a; font-size: var(--title); font-weight: 650; }
 .day-toggle strong { display: inline-flex; align-items: center; gap: 8px; }
 
-/* Kropka zajęć ułożona absolutnie (aby nie wypychała nazwy przedmiotu) */
-.active-dot { position: absolute; left: -15px; top: 50%; transform: translateY(-50%); width: 7px; height: 7px; border-radius: 50%; background: #36a269; box-shadow: 0 0 0 0 rgba(54, 162, 105, .45); animation: active-pulse 1.8s ease-out infinite; }
+.active-dot { width: 7px; height: 7px; flex: 0 0 7px; display: inline-block; border-radius: 50%; background: #36a269; box-shadow: 0 0 0 0 rgba(54, 162, 105, .45); animation: active-pulse 1.8s ease-out infinite; margin-left: 5px; }
 @keyframes active-pulse { 0% { box-shadow: 0 0 0 0 rgba(54, 162, 105, .45); } 70% { box-shadow: 0 0 0 5px rgba(54, 162, 105, 0); } 100% { box-shadow: 0 0 0 0 rgba(54, 162, 105, 0); } }
 
 .weekend-toggle div span { color: #7a838c; font-size: 13px; font-weight: 450; }
 .chevron-box { width: 28px; height: 28px; display: grid; place-items: center; color: #929aa2; }
-.weekend-toggle[aria-expanded="true"] .chevron-box svg, .day-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
-.chevron-box svg, .day-toggle svg { transition: transform .2s ease; }
 .weekend-content { padding: 0 16px 16px; border-top: 1px solid #f0f2f3; }
 .day-section { margin-top: 16px; padding-top: 0; border-top: 0; }
 .day-section:first-child { margin-top: 16px; padding-top: 0; }
@@ -113,7 +110,7 @@ button:not(.weekend-toggle):not(.day-toggle):not(.theme-toggle):hover { backgrou
 .class-info p { margin-top: 4px; }
 .class-title-row .class-title { min-width: 0; }
 .class-title-row h4 { max-width: 100%; }
-.class-title { min-width: 0; display: flex; align-items: center; gap: 4px; position: relative; } /* Dodane position: relative pod active-dot */
+.class-title { min-width: 0; display: flex; align-items: center; gap: 4px; }
 .class-title-row h4 { overflow: hidden; margin: 0; color: #1c2731; font-size: var(--subtitle); font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
 .session-badge, .lecture-badge { min-width: 30px; height: 22px; padding: 0 7px; display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; border: 0; border-radius: 4px; color: #59636e; background: #edf0f2; font-family: inherit; font-size: var(--caption); line-height: 1; font-weight: 400; white-space: nowrap; }
 .class-card.pink .session-badge, .class-card.pink .lecture-badge { color: #b64072; background: #fbe1eb; }
@@ -159,7 +156,6 @@ a, button { -webkit-tap-highlight-color: transparent; }
 .theme-icon svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .column-arrow { cursor:pointer; position:relative; z-index:5; }
 .column-arrow:disabled { visibility:hidden; pointer-events:none; }
-/* Exercise / seminar session counters use the same outlined badge treatment as ĆW / KW. */
 .exercise-session { border: 1px solid currentColor !important; background: transparent !important; color: inherit; }
 :root[data-theme="dark"] .class-card .exercise-session { border-color: currentColor !important; background: transparent !important; }
 .theme-toggle-thumb .theme-icon { width: 20px; height: 20px; }
@@ -196,7 +192,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 
     <footer class="schedule-footer">
       <button type="button" id="favoriteButton" class="install-button">Dodaj do ulubionych</button>
-      <span class="last-updated">Aktualizacja: 25 października 2026</span>
+      <span class="last-updated">Aktualizacja: 13 listopada 2026</span>
     </footer>
   </main>
   <script>
@@ -223,7 +219,7 @@ const t = {
   zdrSat: 'mgr L. Kwiecińska · T-13',
   pracSat: 'mgr W. Czaplińska · T-25',
   psychSat: 'dr M. Kornatowski · TA-2',
-  ekoSat: 'dr B. Kowańska · T-23',
+  ekoSat: 'dr B. Kowańska · T-12',
   zarzSat: 'mgr W. Czaplińska · T-25',
   przedSat: 'dr B. Kowańska · T-23',
   ekoSun: 'dr A. Opolska-Bielańska · Online',
@@ -241,11 +237,15 @@ function item(subject, teacher, time, color, sessionNumber, totalSessions) {
 function getDays(id) {
   if (id === 10) return [];
 
+  // Sunday Psychopathological lecture session mapping (total 8, ending at 7/8 for now)
+  const psychSunMap = { 1: 1, 2: 2, 4: 3, 5: 4, 6: 5, 7: 6, 8: 7 };
+  const psychSunNum = psychSunMap[id];
+
   const sunBase = [
     item('Psychologia ekonomiczna', t.ekoSun, '08:00 – 09:30', 'orange', id, 8),
     item('Psychologia zarządzania', t.zarzSun, '09:45 – 11:15', 'yellow', id, 8),
     item('Psychologia zdrowia', t.zdrSun, '11:30 – 13:00', 'pink', id, 8),
-    item('Psychopatologia', t.psychSun, '13:30 – 15:00', 'green', id, 8)
+    ...(psychSunNum ? [item('Psychopatologia', t.psychSun, '13:30 – 15:00', 'green', psychSunNum, 8)] : [])
   ];
 
   switch(id) {
