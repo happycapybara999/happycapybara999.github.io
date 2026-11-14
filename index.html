@@ -192,7 +192,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 
     <footer class="schedule-footer">
       <button type="button" id="favoriteButton" class="install-button">Dodaj do ulubionych</button>
-      <span class="last-updated">Aktualizacja: 13 listopada 2026</span>
+      <span class="last-updated">Aktualizacja: 14 listopada 2026</span>
     </footer>
   </main>
   <script>
@@ -237,8 +237,8 @@ function item(subject, teacher, time, color, sessionNumber, totalSessions) {
 function getDays(id) {
   if (id === 10) return [];
 
-  // Sunday Psychopathological lecture session mapping (total 8, ending at 7/8 for now)
-  const psychSunMap = { 1: 1, 2: 2, 4: 3, 5: 4, 6: 5, 7: 6, 8: 7 };
+  // Sunday Psychopathological lecture session mapping (total 8)
+  const psychSunMap = { 1: 1, 2: 2, 5: 5, 6: 6, 7: 7, 8: 8 };
   const psychSunNum = psychSunMap[id];
 
   const sunBase = [
@@ -298,7 +298,13 @@ function getDays(id) {
           item('Psychologia zarządzania', t.zarzSat, '18:00 – 20:15', 'yellow', 2, 5),
           item('Przedsiębiorczość', t.przedSat, '19:00 – 19:45', 'indigo', 2, 4)
         ]},
-        { day: 'Niedziela', classes: [...sunBase] }
+        { day: 'Niedziela', classes: [
+          item('Psychologia ekonomiczna', t.ekoSun, '08:00 – 09:30', 'orange', 4, 8),
+          item('Psychologia zarządzania', t.zarzSun, '09:45 – 11:15', 'yellow', 4, 8),
+          item('Psychologia zdrowia', t.zdrSun, '11:30 – 13:00', 'pink', 4, 8),
+          item('Psychopatologia', t.psychSun, '13:30 – 15:00', 'green', 3, 8),
+          item('Psychopatologia', t.psychSun, '15:15 – 16:45', 'green', 4, 8)
+        ]}
       ];
     case 5:
       return [
