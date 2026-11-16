@@ -192,7 +192,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 
     <footer class="schedule-footer">
       <button type="button" id="favoriteButton" class="install-button">Dodaj do ulubionych</button>
-      <span class="last-updated">Aktualizacja: 14 listopada 2026</span>
+      <span class="last-updated">Aktualizacja: 16 listopada 2026</span>
     </footer>
   </main>
   <script>
@@ -295,7 +295,6 @@ function getDays(id) {
           item('Psychologia pracy', t.pracSat, '10:30 – 12:45', 'blue', 4, 8),
           item('Psychopatologia', t.psychSat, '13:00 – 15:15', 'green', 3, 8),
           item('Psychologia ekonomiczna', t.ekoSat, '15:30 – 17:45', 'orange', 2, 5),
-          item('Psychologia zarządzania', t.zarzSat, '18:00 – 20:15', 'yellow', 2, 5),
           item('Przedsiębiorczość', t.przedSat, '19:00 – 19:45', 'indigo', 2, 4)
         ]},
         { day: 'Niedziela', classes: [
@@ -329,7 +328,7 @@ function getDays(id) {
           item('Psychologia pracy', t.pracSat, '10:30 – 12:45', 'blue', 6, 8),
           item('Psychopatologia', t.psychSat, '13:00 – 15:15', 'green', 6, 8),
           item('Psychologia ekonomiczna', t.ekoSat, '15:30 – 17:45', 'orange', 3, 5),
-          item('Psychologia zarządzania', t.zarzSat, '18:00 – 20:15', 'yellow', 3, 5)
+          item('Psychologia zarządzania', t.zarzSat, '18:00 – 20:15', 'yellow', 2, 5)
         ]},
         { day: 'Niedziela', classes: [...sunBase] }
       ];
@@ -338,7 +337,8 @@ function getDays(id) {
         { day: 'Sobota', classes: [
           item('Psychologia zdrowia', t.zdrSat, '08:00 – 10:15', 'pink', 7, 8),
           item('Psychologia pracy', t.pracSat, '10:30 – 12:45', 'blue', 7, 8),
-          item('Przedsiębiorczość', t.przedSat, '15:30 – 17:45', 'indigo', 4, 4)
+          item('Psychologia zarządzania', t.zarzSat, '15:30 – 17:45', 'yellow', 3, 5),
+          item('Przedsiębiorczość', t.przedSat, '18:00 – 20:15', 'indigo', 4, 4)
         ]},
         { day: 'Niedziela', classes: [
           ...sunBase,
